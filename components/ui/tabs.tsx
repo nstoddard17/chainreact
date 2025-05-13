@@ -21,8 +21,8 @@ export function Tabs({ defaultValue, children }: TabsProps) {
   );
 }
 
-export function TabsList({ children }: { children: React.ReactNode }) {
-  return <div className="flex space-x-2 mb-4">{children}</div>;
+export function TabsList({ children, className = "" }: { children: React.ReactNode; className?: string }) {
+  return <div className={`flex space-x-2 mb-4 ${className}`}>{children}</div>;
 }
 
 export function TabsTrigger({ children, value }: { children: React.ReactNode; value: string }) {
