@@ -36,6 +36,13 @@ export function TabsTrigger({ children, value }: { children: React.ReactNode; va
   );
 }
 
-export function TabsContent({ children }: { children: React.ReactNode }) {
-  return <div className="mt-2">{children}</div>;
+export function TabsContent({
+  children,
+  value,
+}: {
+  children: React.ReactNode;
+  value: string;
+}) {
+  const tabValue = document?.querySelector('[data-tabs-value]')?.getAttribute('data-tabs-value');
+  return tabValue === value ? <div className="mt-2">{children}</div> : null;
 }
