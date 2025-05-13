@@ -1,0 +1,1 @@
+# ChainReact\n\nFull-stack automation platform built with Next.js, Supabase, and OpenAI.
