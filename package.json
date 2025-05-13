@@ -15,7 +15,9 @@
     "micro": "^9.3.4",   
     "next": "latest",
     "react": "latest",
-    "react-dom": "latest"
+    "react-dom": "latest",
+    "clsx": "^2.0.0",
+    "tailwind-merge": "^2.2.0"
   },
   "devDependencies": {
     "autoprefixer": "^10.0.0",
