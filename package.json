@@ -19,7 +19,8 @@
     "react": "latest",
     "react-dom": "latest",
     "stripe": "^12.0.0",
-    "tailwind-merge": "^2.2.0"
+    "tailwind-merge": "^2.2.0",
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "@types/react": "^18.2.0",
