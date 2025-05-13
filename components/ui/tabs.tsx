@@ -1,4 +1,11 @@
-import * as React from "react";
+'use client';
+
+import * as React from 'react';
+
+const TabsContext = React.createContext<{
+  value: string;
+  setValue: (value: string) => void;
+} | null>(null);
 
 interface TabsProps {
   defaultValue: string;
@@ -8,9 +15,9 @@ interface TabsProps {
 export function Tabs({ defaultValue, children }: TabsProps) {
   const [value, setValue] = React.useState(defaultValue);
   return (
-    <div data-tabs-value={value}>
-      {children}
-    </div>
+    <TabsContext.Provider value={{ value, setValue }}>
+      <div>{children}</div>
+    </TabsContext.Provider>
   );
 }
 
@@ -19,30 +26,23 @@ export function TabsList({ children }: { children: React.ReactNode }) {
 }
 
 export function TabsTrigger({ children, value }: { children: React.ReactNode; value: string }) {
-  const handleClick = () => {
-    const tabContainer = document.querySelector('[data-tabs-value]');
-    if (tabContainer) {
-      tabContainer.setAttribute('data-tabs-value', value);
-    }
-  };
+  const context = React.useContext(TabsContext);
+  if (!context) return null;
+
+  const isActive = context.value === value;
 
   return (
     <button
-      className="px-3 py-1 text-sm rounded border bg-white shadow-sm"
-      onClick={handleClick}
+      className={`px-3 py-1 text-sm rounded border ${isActive ? 'bg-blue-600 text-white' : 'bg-white'}`}
+      onClick={() => context.setValue(value)}
     >
       {children}
     </button>
   );
 }
 
-export function TabsContent({
-  children,
-  value,
-}: {
-  children: React.ReactNode;
-  value: string;
-}) {
-  const tabValue = document?.querySelector('[data-tabs-value]')?.getAttribute('data-tabs-value');
-  return tabValue === value ? <div className="mt-2">{children}</div> : null;
+export function TabsContent({ children, value }: { children: React.ReactNode; value: string }) {
+  const context = React.useContext(TabsContext);
+  if (!context || context.value !== value) return null;
+  return <div className="mt-2">{children}</div>;
 }
