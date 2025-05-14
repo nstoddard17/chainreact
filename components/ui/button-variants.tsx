@@ -8,7 +8,7 @@ import { Slot } from '@radix-ui/react-slot';
 
 interface ButtonVariantsProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'link' | 'gradient' | 'shimmer';
-  size?: 'sm' | 'md' | 'lg';
+  size?: 'sm' | 'md' | 'lg' | 'icon';
   isLoading?: boolean;
   leftIcon?: React.ReactNode;
   rightIcon?: React.ReactNode;
@@ -33,6 +33,7 @@ export function ButtonVariants({
     sm: 'h-8 px-3 text-sm',
     md: 'h-10 px-4 text-base',
     lg: 'h-12 px-6 text-lg',
+    icon: 'h-9 w-9 p-0',
   };
 
   const variants = {

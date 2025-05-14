@@ -129,7 +129,7 @@ export function FloatingElement({ children, className = '' }: FloatingElementPro
 interface ShimmerButtonProps {
   children: React.ReactNode;
   className?: string;
-  onClick?: () => void;
+  onClick?: React.MouseEventHandler<HTMLElement>;
   asChild?: boolean;
 }
 
