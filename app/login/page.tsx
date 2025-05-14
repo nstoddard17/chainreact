@@ -126,7 +126,7 @@ function LoginForm() {
           animate="visible"
           transition={{ duration: 0.5, delay: 0.2 }}
           onSubmit={handleSubmit}
-          className="mt-8 space-y-6 bg-white p-8 rounded-xl shadow-lg"
+          className="mt-8 space-y-6 bg-white p-8 rounded-xl shadow-lg w-full"
         >
           <div className="space-y-4">
             {isSignup && (
@@ -193,7 +193,7 @@ function LoginForm() {
             )}
           </div>
 
-          <div className="w-full">
+          <div className="w-full flex">
             <ButtonVariants
               type="submit"
               isLoading={isLoading}
