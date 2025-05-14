@@ -2,59 +2,61 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { Button } from './button';
+import { cn } from '@/lib/utils';
+import { LucideIcon } from 'lucide-react';
 
 interface InteractiveCardProps {
   title: string;
   description: string;
-  icon?: React.ReactNode;
+  icon: LucideIcon;
+  color: string;
   href: string;
-  color?: string;
   className?: string;
 }
 
 export function InteractiveCard({
   title,
   description,
-  icon,
+  icon: Icon,
+  color,
   href,
-  color = 'from-primary-600 to-primary-500',
-  className = '',
+  className,
 }: InteractiveCardProps) {
   return (
     <motion.div
       whileHover={{ y: -5 }}
-      className={`group relative bg-white/80 backdrop-blur-sm p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 ${className}`}
+      className={cn(
+        'group relative rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition-all hover:shadow-lg',
+        className
+      )}
     >
-      <div className={`absolute inset-0 bg-gradient-to-br ${color} opacity-0 group-hover:opacity-10 rounded-2xl transition-opacity duration-300`} />
-      <div className="relative">
-        {icon && (
-          <motion.div
-            whileHover={{ scale: 1.1, rotate: 5 }}
-            className={`inline-flex p-3 rounded-xl bg-gradient-to-br ${color} text-white`}
+      <Link href={href} className="block">
+        <div className="flex items-center gap-4">
+          <div className={cn('rounded-lg p-2 bg-gradient-to-br', color)}>
+            <Icon className="h-6 w-6 text-white" />
+          </div>
+          <h3 className="text-lg font-semibold text-gray-900 group-hover:text-primary-600">
+            {title}
+          </h3>
+        </div>
+        <p className="mt-4 text-gray-600">{description}</p>
+        <div className="mt-4 flex items-center text-primary-600">
+          <span className="text-sm font-medium">Learn more</span>
+          <svg
+            className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
           >
-            {icon}
-          </motion.div>
-        )}
-        <h3 className="mt-4 font-space-grotesk text-lg font-semibold text-gray-900">
-          {title}
-        </h3>
-        <p className="mt-2 text-sm sm:text-base text-gray-600">
-          {description}
-        </p>
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileHover={{ opacity: 1 }}
-          className="mt-4"
-        >
-          <Button variant="ghost" size="sm" asChild className="text-primary-600 hover:text-primary-700 hover:bg-primary-50">
-            <Link href={href}>
-              Learn more
-              <span className="ml-1">→</span>
-            </Link>
-          </Button>
-        </motion.div>
-      </div>
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M9 5l7 7-7 7"
+            />
+          </svg>
+        </div>
+      </Link>
     </motion.div>
   );
 } 
