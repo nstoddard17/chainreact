@@ -198,7 +198,7 @@ function LoginForm() {
               type="submit"
               isLoading={isLoading}
               disabled={isLoading}
-              className="w-full h-14 bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-200 rounded-xl flex items-center justify-center"
+              className="w-full bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-200 rounded-xl"
             >
               {isSignup ? 'Create Account' : 'Sign in'}
             </ButtonVariants>
@@ -217,7 +217,7 @@ function LoginForm() {
             <ButtonVariants
               type="button"
               onClick={handleGoogleSignIn}
-              className="w-full h-14 bg-white text-gray-700 border border-gray-300 hover:bg-gray-50 px-6 py-4 text-base font-semibold rounded-xl shadow-sm hover:shadow transition-all duration-200 flex items-center justify-center"
+              className="w-full bg-white text-gray-700 border border-gray-300 hover:bg-gray-50 px-6 py-4 text-base font-semibold rounded-xl shadow-sm hover:shadow transition-all duration-200"
             >
               <Mail className="h-5 w-5 mr-2" />
               Google
@@ -225,7 +225,7 @@ function LoginForm() {
             <ButtonVariants
               type="button"
               onClick={handleGithubSignIn}
-              className="w-full h-14 bg-white text-gray-700 border border-gray-300 hover:bg-gray-50 px-6 py-4 text-base font-semibold rounded-xl shadow-sm hover:shadow transition-all duration-200 flex items-center justify-center"
+              className="w-full bg-white text-gray-700 border border-gray-300 hover:bg-gray-50 px-6 py-4 text-base font-semibold rounded-xl shadow-sm hover:shadow transition-all duration-200"
             >
               <Github className="h-5 w-5 mr-2" />
               GitHub
