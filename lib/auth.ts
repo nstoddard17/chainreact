@@ -27,8 +27,8 @@ export const { auth, signIn, signOut } = NextAuth({
             session.user.organization = {
               id: organization.id,
               name: organization.name,
-              website: organization.website,
-              industry: organization.industry,
+              website: organization.website ?? undefined,
+              industry: organization.industry ?? undefined,
             };
           }
         }
