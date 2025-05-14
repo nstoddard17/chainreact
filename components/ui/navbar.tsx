@@ -51,7 +51,7 @@ export function Navbar() {
             <Link href="/login">Log in</Link>
           </Button>
           <Button asChild>
-            <Link href="/signup">Get started</Link>
+            <Link href="/login?signup=true">Get started</Link>
           </Button>
         </div>
       </nav>
@@ -98,7 +98,7 @@ export function Navbar() {
                       <Link href="/login">Log in</Link>
                     </Button>
                     <Button className="mt-4 w-full justify-center" asChild>
-                      <Link href="/signup">Get started</Link>
+                      <Link href="/login?signup=true">Get started</Link>
                     </Button>
                   </div>
                 </div>

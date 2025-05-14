@@ -2,8 +2,11 @@
 
 import { motion } from 'framer-motion';
 import { Button } from './button';
+import { useRouter } from 'next/navigation';
 
 export function HeroSection() {
+  const router = useRouter();
+
   return (
     <div className="relative overflow-hidden bg-gradient-to-b from-blue-50 to-white">
       <div className="absolute inset-0 bg-grid-pattern opacity-5" />
@@ -22,7 +25,11 @@ export function HeroSection() {
             Build powerful, AI-powered workflows. No dev team required.
           </p>
           <div className="mt-10 flex justify-center gap-4">
-            <Button size="lg" className="bg-blue-600 hover:bg-blue-700">
+            <Button 
+              size="lg" 
+              className="bg-blue-600 hover:bg-blue-700"
+              onClick={() => router.push('/login?signup=true')}
+            >
               Get Started Free
             </Button>
             <Button size="lg" variant="outline" className="border-blue-600 text-blue-600 hover:bg-blue-50">
