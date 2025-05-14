@@ -4,11 +4,11 @@ const nextConfig = {
   swcMinify: true,
   images: {
     domains: ['avatars.githubusercontent.com'], // Add any other image domains you need
+    unoptimized: false
   },
-  // Enable static optimization for pages that can be statically generated
-  experimental: {
-    optimizeCss: true,
-  },
+  // Vercel-specific optimizations
+  poweredByHeader: false,
+  compress: true
 }
 
 module.exports = nextConfig 
