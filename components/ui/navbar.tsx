@@ -60,17 +60,24 @@ function NavbarContent() {
             <Link
               key={item.name}
               href={item.href}
-              className="text-sm font-semibold leading-6 text-gray-900 hover:text-blue-600"
+              className="text-sm font-semibold leading-6 text-gray-900 hover:text-blue-600 transition-colors duration-200"
             >
               {item.name}
             </Link>
           ))}
         </div>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end lg:gap-x-6">
-          <Button variant="ghost" asChild>
+          <Button 
+            variant="ghost" 
+            className="text-gray-900 hover:text-blue-600 hover:bg-transparent transition-colors duration-200"
+            asChild
+          >
             <Link href={getLoginLink()}>Log in</Link>
           </Button>
-          <Button asChild>
+          <Button 
+            className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2.5 rounded-xl shadow-sm hover:shadow transition-all duration-200"
+            asChild
+          >
             <Link href={getSignupLink()}>Get started</Link>
           </Button>
         </div>
@@ -106,7 +113,7 @@ function NavbarContent() {
                       <Link
                         key={item.name}
                         href={item.href}
-                        className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                        className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 transition-colors duration-200"
                         onClick={() => setMobileMenuOpen(false)}
                       >
                         {item.name}
@@ -114,10 +121,17 @@ function NavbarContent() {
                     ))}
                   </div>
                   <div className="py-6">
-                    <Button variant="ghost" className="w-full justify-center" asChild>
+                    <Button 
+                      variant="ghost" 
+                      className="w-full justify-center text-gray-900 hover:text-blue-600 hover:bg-transparent transition-colors duration-200"
+                      asChild
+                    >
                       <Link href={getLoginLink()} onClick={() => setMobileMenuOpen(false)}>Log in</Link>
                     </Button>
-                    <Button className="mt-4 w-full justify-center" asChild>
+                    <Button 
+                      className="mt-4 w-full justify-center bg-blue-600 hover:bg-blue-700 text-white rounded-xl shadow-sm hover:shadow transition-all duration-200"
+                      asChild
+                    >
                       <Link href={getSignupLink()} onClick={() => setMobileMenuOpen(false)}>Get started</Link>
                     </Button>
                   </div>

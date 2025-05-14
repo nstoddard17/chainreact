@@ -72,7 +72,7 @@ export default function BlogPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="mx-auto max-w-2xl text-center"
+            className="mx-auto max-w-3xl text-center"
           >
             <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
               Blog
@@ -86,12 +86,12 @@ export default function BlogPage() {
 
       {/* Featured Post */}
       <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8">
-        <div className="mx-auto max-w-2xl lg:mx-0">
+        <div className="mx-auto max-w-3xl text-center">
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
             Featured Post
           </h2>
         </div>
-        <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2">
+        <div className="mx-auto mt-16 grid max-w-3xl grid-cols-1 gap-x-8 gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2">
           <article className="flex flex-col items-start">
             <div className="relative w-full">
               <Image
@@ -146,12 +146,12 @@ export default function BlogPage() {
 
       {/* Recent Posts */}
       <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8">
-        <div className="mx-auto max-w-2xl lg:mx-0">
+        <div className="mx-auto max-w-3xl text-center">
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
             Recent Posts
           </h2>
         </div>
-        <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+        <div className="mx-auto mt-16 grid max-w-3xl grid-cols-1 gap-x-8 gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
           {recentPosts.map((post) => (
             <motion.article
               key={post.id}

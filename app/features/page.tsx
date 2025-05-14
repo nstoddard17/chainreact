@@ -81,20 +81,30 @@ export default function FeaturesPage() {
                 text="Everything you need to build and scale your application"
                 className="text-lg sm:text-xl text-gray-600 mb-8"
               />
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <div className="flex flex-col sm:flex-row gap-6 justify-center">
                 <ButtonVariants 
                   variant="primary" 
-                  className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-200" 
+                  className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-8 py-4 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5" 
                   asChild
                 >
-                  <Link href="/login?signup=true">Start Building Now →</Link>
+                  <Link href="/login?signup=true" className="flex items-center gap-2">
+                    Start Building Now
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
+                  </Link>
                 </ButtonVariants>
                 <ButtonVariants 
                   variant="outline" 
-                  className="border-2 border-blue-600 text-blue-600 hover:bg-blue-50 px-8 py-3 text-lg font-semibold transition-all duration-200" 
+                  className="bg-white border-2 border-gray-200 text-gray-700 hover:bg-gray-50 hover:border-gray-300 px-8 py-4 text-lg font-semibold rounded-xl transition-all duration-300 transform hover:-translate-y-0.5" 
                   asChild
                 >
-                  <Link href="/pricing">Compare Plans</Link>
+                  <Link href="/pricing" className="flex items-center gap-2">
+                    Compare Plans
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </Link>
                 </ButtonVariants>
               </div>
             </div>
@@ -125,20 +135,30 @@ export default function FeaturesPage() {
                 <p className="text-lg text-gray-600 mb-8">
                   Join thousands of developers who are already building with our platform.
                 </p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <div className="flex flex-col sm:flex-row gap-6 justify-center">
                   <ButtonVariants 
                     variant="primary" 
-                    className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-200" 
+                    className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-8 py-4 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5" 
                     asChild
                   >
-                    <Link href="/login?signup=true">Start Your Free Trial →</Link>
+                    <Link href="/login?signup=true" className="flex items-center gap-2">
+                      Start Your Free Trial
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                      </svg>
+                    </Link>
                   </ButtonVariants>
                   <ButtonVariants 
                     variant="outline" 
-                    className="border-2 border-blue-600 text-blue-600 hover:bg-blue-50 px-8 py-3 text-lg font-semibold transition-all duration-200" 
+                    className="bg-white border-2 border-gray-200 text-gray-700 hover:bg-gray-50 hover:border-gray-300 px-8 py-4 text-lg font-semibold rounded-xl transition-all duration-300 transform hover:-translate-y-0.5" 
                     asChild
                   >
-                    <Link href="/contact">Schedule a Demo</Link>
+                    <Link href="/contact" className="flex items-center gap-2">
+                      Schedule a Demo
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </Link>
                   </ButtonVariants>
                 </div>
               </FloatingElement>

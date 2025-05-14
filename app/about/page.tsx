@@ -51,15 +51,15 @@ export default function AboutPage() {
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
       {/* Hero Section */}
       <section className="relative py-24 sm:py-32 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary-600 to-primary-700 opacity-90" />
+        <div className="absolute inset-0 bg-gradient-to-br from-primary-700 to-primary-800 opacity-95" />
         <div className="absolute inset-0 bg-grid-white/10" />
         <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
             <AnimatedText
               text="Our Mission"
-              className="text-4xl font-bold tracking-tight text-white sm:text-6xl"
+              className="text-4xl font-bold tracking-tight text-white sm:text-6xl drop-shadow-lg"
             />
-            <p className="mt-6 text-lg leading-8 text-primary-100">
+            <p className="mt-6 text-lg leading-8 text-white/90">
               We're on a mission to empower developers and teams to build better software, faster.
               Our platform combines cutting-edge technology with intuitive design to create the
               perfect development environment.
@@ -194,35 +194,42 @@ export default function AboutPage() {
       {/* CTA Section */}
       <section className="relative isolate mt-32 px-6 py-32 sm:mt-56 sm:py-40 lg:px-8">
         <div className="absolute inset-0 -z-10 overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-primary-600 to-primary-700 opacity-90" />
+          <div className="absolute inset-0 bg-gradient-to-br from-primary-700 to-primary-800 opacity-95" />
           <div className="absolute inset-0 bg-grid-white/10" />
         </div>
         <div className="mx-auto max-w-3xl text-center">
-          <FloatingElement>
-            <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
-              Join our growing community
-            </h2>
-            <p className="mt-6 text-lg leading-8 text-primary-100">
-              Start building better software today. Our platform is designed to help teams of all sizes
-              succeed in their development journey.
-            </p>
-            <div className="mt-10 flex items-center justify-center gap-x-6">
-              <ButtonVariants 
-                variant="primary" 
-                className="bg-white text-primary-600 hover:bg-primary-50 px-8 py-3 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-200" 
-                asChild
-              >
-                <Link href="/login?signup=true">Get Started →</Link>
-              </ButtonVariants>
-              <ButtonVariants 
-                variant="outline" 
-                className="border-2 border-white text-white hover:bg-white/10 px-8 py-3 text-lg font-semibold transition-all duration-200" 
-                asChild
-              >
-                <Link href="/contact">Contact Us</Link>
-              </ButtonVariants>
-            </div>
-          </FloatingElement>
+          <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl drop-shadow-lg">
+            Ready to join our mission?
+          </h2>
+          <p className="mt-6 text-lg leading-8 text-white/90">
+            Start building better software today with our powerful platform.
+          </p>
+          <div className="mt-10 flex items-center justify-center gap-x-6">
+            <ButtonVariants
+              variant="primary"
+              className="bg-white text-primary-700 hover:bg-gray-100 px-8 py-4 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5"
+              asChild
+            >
+              <Link href="/login?signup=true" className="flex items-center gap-2">
+                Get Started
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </Link>
+            </ButtonVariants>
+            <ButtonVariants
+              variant="outline"
+              className="bg-transparent border-2 border-white text-white hover:bg-white/10 px-8 py-4 text-lg font-semibold rounded-xl transition-all duration-300 transform hover:-translate-y-0.5"
+              asChild
+            >
+              <Link href="/contact" className="flex items-center gap-2">
+                Contact Sales
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </Link>
+            </ButtonVariants>
+          </div>
         </div>
       </section>
     </div>
