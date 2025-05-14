@@ -105,7 +105,7 @@ export default function AboutPage() {
       {/* Story Section */}
       <section className="py-24 sm:py-32">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="mx-auto max-w-2xl lg:mx-0">
+          <div className="mx-auto max-w-3xl text-center">
             <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
               Our Story
             </h2>
@@ -115,16 +115,16 @@ export default function AboutPage() {
               trusted by thousands of teams worldwide.
             </p>
           </div>
-          <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-8 lg:mx-0 lg:max-w-none lg:grid-cols-2">
+          <div className="mx-auto mt-16 grid max-w-3xl grid-cols-1 gap-8 lg:grid-cols-2">
             <ScrollReveal>
               <div className="flex flex-col gap-8">
-                <p className="text-lg leading-8 text-gray-600">
+                <p className="text-lg leading-relaxed text-gray-600">
                   Our journey began when we noticed a gap in the market for a truly developer-friendly
                   platform that combined powerful features with an intuitive interface. We spent months
                   talking to developers, understanding their pain points, and designing solutions that
                   would make their lives easier.
                 </p>
-                <p className="text-lg leading-8 text-gray-600">
+                <p className="text-lg leading-relaxed text-gray-600">
                   Today, we're proud to offer a platform that not only meets but exceeds the needs of
                   modern development teams. From startups to enterprises, our tools help teams build
                   better software, faster.
@@ -133,12 +133,12 @@ export default function AboutPage() {
             </ScrollReveal>
             <ScrollReveal>
               <div className="flex flex-col gap-8">
-                <p className="text-lg leading-8 text-gray-600">
+                <p className="text-lg leading-relaxed text-gray-600">
                   Our commitment to innovation and user experience has earned us recognition in the
                   industry, but our greatest achievement is the success of our users. We're constantly
                   evolving our platform based on user feedback and emerging technologies.
                 </p>
-                <p className="text-lg leading-8 text-gray-600">
+                <p className="text-lg leading-relaxed text-gray-600">
                   As we look to the future, we remain focused on our mission: to empower developers
                   and teams to build better software. We're excited to continue this journey with
                   our growing community of users.
@@ -152,7 +152,7 @@ export default function AboutPage() {
       {/* Team Section */}
       <section className="py-24 sm:py-32">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="mx-auto max-w-2xl lg:mx-0">
+          <div className="mx-auto max-w-3xl text-center">
             <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
               Meet our team
             </h2>
@@ -163,7 +163,7 @@ export default function AboutPage() {
           </div>
           <ul
             role="list"
-            className="mx-auto mt-20 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-4"
+            className="mx-auto mt-20 grid max-w-3xl grid-cols-1 gap-x-8 gap-y-16 sm:grid-cols-2 lg:grid-cols-4"
           >
             {team.map((person) => (
               <ScrollReveal key={person.name}>
@@ -182,7 +182,7 @@ export default function AboutPage() {
                       {person.name}
                     </h3>
                     <p className="text-base leading-7 text-primary-600">{person.role}</p>
-                    <p className="mt-4 text-base leading-7 text-gray-600">{person.bio}</p>
+                    <p className="mt-4 text-base leading-relaxed text-gray-600">{person.bio}</p>
                   </li>
                 </TiltCard>
               </ScrollReveal>
@@ -197,25 +197,26 @@ export default function AboutPage() {
           <div className="absolute inset-0 bg-gradient-to-br from-primary-600 to-primary-700 opacity-90" />
           <div className="absolute inset-0 bg-grid-white/10" />
         </div>
-        <div className="mx-auto max-w-2xl text-center">
+        <div className="mx-auto max-w-3xl text-center">
           <FloatingElement>
             <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
-              Join our mission
+              Join our growing community
             </h2>
-            <p className="mx-auto mt-6 max-w-xl text-lg leading-8 text-primary-100">
-              We're always looking for talented individuals to join our team and help us build the
-              future of software development.
+            <p className="mt-6 text-lg leading-8 text-primary-100">
+              Start building better software today. Our platform is designed to help teams of all sizes
+              succeed in their development journey.
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
-              <ShimmerButton
-                className="bg-white text-primary-600 hover:bg-primary-50"
+              <ButtonVariants 
+                variant="primary" 
+                className="bg-white text-primary-600 hover:bg-primary-50 px-8 py-3 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-200" 
                 asChild
               >
-                <Link href="/login?signup=true">Join Our Team</Link>
-              </ShimmerButton>
-              <ButtonVariants
-                variant="outline"
-                className="border-white text-white hover:bg-white/10"
+                <Link href="/login?signup=true">Get Started →</Link>
+              </ButtonVariants>
+              <ButtonVariants 
+                variant="outline" 
+                className="border-2 border-white text-white hover:bg-white/10 px-8 py-3 text-lg font-semibold transition-all duration-200" 
                 asChild
               >
                 <Link href="/contact">Contact Us</Link>

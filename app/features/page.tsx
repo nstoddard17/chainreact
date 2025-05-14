@@ -82,11 +82,19 @@ export default function FeaturesPage() {
                 className="text-lg sm:text-xl text-gray-600 mb-8"
               />
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <ButtonVariants variant="primary" asChild>
-                  <Link href="/login?signup=true">Get Started</Link>
+                <ButtonVariants 
+                  variant="primary" 
+                  className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-200" 
+                  asChild
+                >
+                  <Link href="/login?signup=true">Start Building Now →</Link>
                 </ButtonVariants>
-                <ButtonVariants variant="outline" asChild>
-                  <Link href="/pricing">View Pricing</Link>
+                <ButtonVariants 
+                  variant="outline" 
+                  className="border-2 border-blue-600 text-blue-600 hover:bg-blue-50 px-8 py-3 text-lg font-semibold transition-all duration-200" 
+                  asChild
+                >
+                  <Link href="/pricing">Compare Plans</Link>
                 </ButtonVariants>
               </div>
             </div>
@@ -118,11 +126,19 @@ export default function FeaturesPage() {
                   Join thousands of developers who are already building with our platform.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <ButtonVariants variant="primary" asChild>
-                    <Link href="/login?signup=true">Start Free Trial</Link>
+                  <ButtonVariants 
+                    variant="primary" 
+                    className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-200" 
+                    asChild
+                  >
+                    <Link href="/login?signup=true">Start Your Free Trial →</Link>
                   </ButtonVariants>
-                  <ButtonVariants variant="outline" asChild>
-                    <Link href="/contact">Contact Sales</Link>
+                  <ButtonVariants 
+                    variant="outline" 
+                    className="border-2 border-blue-600 text-blue-600 hover:bg-blue-50 px-8 py-3 text-lg font-semibold transition-all duration-200" 
+                    asChild
+                  >
+                    <Link href="/contact">Schedule a Demo</Link>
                   </ButtonVariants>
                 </div>
               </FloatingElement>
