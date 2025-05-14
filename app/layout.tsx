@@ -5,6 +5,7 @@ import { Footer } from '@/components/ui/footer';
 import { AuthProvider } from '@/context/auth-context';
 import { SessionProvider } from 'next-auth/react';
 import { Toaster } from 'sonner';
+import { Suspense } from 'react';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -43,7 +44,13 @@ export default function RootLayout({
               
               <Navbar />
               <main className="flex-grow">
-                {children}
+                <Suspense fallback={
+                  <div className="min-h-screen flex items-center justify-center">
+                    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600" />
+                  </div>
+                }>
+                  {children}
+                </Suspense>
               </main>
             </div>
             <Footer />

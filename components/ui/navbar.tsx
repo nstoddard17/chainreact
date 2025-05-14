@@ -1,11 +1,12 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname, useSearchParams } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Menu, X } from 'lucide-react';
+import { Suspense } from 'react';
 
 const navigation = [
   { name: 'Features', href: '/features' },
@@ -15,7 +16,7 @@ const navigation = [
   { name: 'Support', href: '/support' },
 ];
 
-export function Navbar() {
+function NavbarContent() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -127,5 +128,21 @@ export function Navbar() {
         )}
       </AnimatePresence>
     </header>
+  );
+}
+
+export function Navbar() {
+  return (
+    <Suspense fallback={
+      <header className="fixed inset-x-0 top-0 z-50 bg-white/80 backdrop-blur-sm">
+        <nav className="flex items-center justify-between p-6 lg:px-8">
+          <div className="flex lg:flex-1">
+            <span className="text-xl font-bold text-gray-900">ChainReact</span>
+          </div>
+        </nav>
+      </header>
+    }>
+      <NavbarContent />
+    </Suspense>
   );
 } 
