@@ -1,131 +1,184 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import Image from 'next/image';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
+import { ScrollReveal, AnimatedText, FloatingElement, ShimmerButton } from '@/components/ui/micro-interactions';
+import { ParallaxSection, TiltCard, AnimatedGradient, AnimatedBorder } from '@/components/ui/interactive-elements';
+import { AnimatedCounter } from '@/components/ui/interactive-elements';
+
+const stats = [
+  { label: 'Active Users', value: 10000, suffix: '+' },
+  { label: 'Countries', value: 50, suffix: '+' },
+  { label: 'Success Rate', value: 99, suffix: '%' },
+  { label: 'Support Team', value: 24, suffix: '/7' },
+];
+
+const team = [
+  {
+    name: 'Sarah Johnson',
+    role: 'CEO & Founder',
+    image: '/team/sarah.jpg',
+    bio: 'Former tech executive with 15+ years of experience in enterprise software.',
+  },
+  {
+    name: 'Michael Chen',
+    role: 'CTO',
+    image: '/team/michael.jpg',
+    bio: 'Ex-Google engineer specializing in scalable architecture and AI.',
+  },
+  {
+    name: 'Emily Rodriguez',
+    role: 'Head of Product',
+    image: '/team/emily.jpg',
+    bio: 'Product leader with a track record of successful SaaS launches.',
+  },
+  {
+    name: 'David Kim',
+    role: 'Head of Design',
+    image: '/team/david.jpg',
+    bio: 'Award-winning designer focused on creating intuitive user experiences.',
+  },
+];
 
 export default function AboutPage() {
+  const { scrollYProgress } = useScroll();
+  const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
+  const scale = useTransform(scrollYProgress, [0, 0.2], [1, 0.8]);
+
   return (
-    <div className="bg-white">
-      {/* Hero Section */}
-      <div className="relative isolate overflow-hidden bg-gradient-to-b from-blue-50 to-white">
-        <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="mx-auto max-w-2xl text-center"
-          >
-            <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-              About ChainReact
-            </h1>
-            <p className="mt-6 text-lg leading-8 text-gray-600">
-              We're building the future of workflow automation, making it accessible to everyone.
-            </p>
-          </motion.div>
-        </div>
-      </div>
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+      <motion.div
+        style={{ opacity, scale }}
+        className="fixed inset-0 pointer-events-none"
+      >
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary-600/10 via-transparent to-transparent" />
+      </motion.div>
 
-      {/* Mission Section */}
-      <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8">
-        <div className="mx-auto max-w-2xl lg:mx-0">
-          <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-            Our Mission
-          </h2>
-          <p className="mt-6 text-lg leading-8 text-gray-600">
-            At ChainReact, we believe that automation should be accessible to everyone. Our mission is to empower businesses and individuals to automate their workflows without the need for complex coding or technical expertise.
-          </p>
-        </div>
-      </div>
-
-      {/* Founder Story */}
-      <div className="bg-gray-50">
-        <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8">
-          <div className="mx-auto max-w-2xl lg:mx-0">
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-              Founder's Story
-            </h2>
-            <div className="mt-10 flex items-center gap-x-6">
-              <div className="relative h-40 w-40 overflow-hidden rounded-full">
-                <Image
-                  src="/founder.jpg"
-                  alt="Founder"
-                  fill
-                  className="object-cover"
-                />
+      <main className="relative">
+        {/* Hero Section */}
+        <section className="relative py-12 sm:py-20 overflow-hidden">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-3xl mx-auto text-center">
+              <AnimatedText
+                text="Our Mission"
+                className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-6"
+              />
+              <AnimatedText
+                text="We're on a mission to revolutionize how businesses operate by making automation accessible to everyone."
+                className="text-lg sm:text-xl text-gray-600 mb-8"
+              />
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <ShimmerButton asChild>
+                  <Link href="/login#signup">Join Our Team</Link>
+                </ShimmerButton>
+                <Button variant="outline" asChild>
+                  <Link href="/contact">Contact Us</Link>
+                </Button>
               </div>
-              <div className="flex-1">
-                <h3 className="text-xl font-semibold text-gray-900">John Doe</h3>
-                <p className="mt-2 text-sm text-gray-600">Founder & CEO</p>
-                <p className="mt-4 text-base leading-7 text-gray-600">
-                  After years of working with complex automation systems, I realized there had to be a better way. ChainReact was born from the vision of making powerful automation tools accessible to everyone, regardless of their technical background.
+            </div>
+          </div>
+        </section>
+
+        {/* Stats Section */}
+        <section className="py-12 sm:py-20">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+              {stats.map((stat, index) => (
+                <ScrollReveal key={stat.label} delay={index * 0.1}>
+                  <TiltCard>
+                    <div className="bg-white/80 backdrop-blur-sm p-6 rounded-2xl shadow-lg">
+                      <AnimatedCounter
+                        end={stat.value}
+                        suffix={stat.suffix}
+                        className="text-4xl font-bold text-primary-600"
+                      />
+                      <p className="mt-2 text-sm text-gray-600">{stat.label}</p>
+                    </div>
+                  </TiltCard>
+                </ScrollReveal>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Story Section */}
+        <section className="py-12 sm:py-20">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <AnimatedBorder className="max-w-4xl mx-auto">
+              <div className="bg-white rounded-lg p-8 sm:p-12">
+                <ScrollReveal>
+                  <h2 className="text-3xl font-bold text-gray-900 mb-6">Our Story</h2>
+                  <div className="prose prose-lg text-gray-600">
+                    <p>
+                      Founded in 2023, our company emerged from a simple observation: businesses were struggling with complex,
+                      outdated workflows that hindered growth and innovation. We set out to change that by creating a platform
+                      that makes automation accessible to everyone.
+                    </p>
+                    <p className="mt-4">
+                      Today, we're proud to serve thousands of businesses worldwide, helping them streamline their operations
+                      and focus on what matters most: growth and innovation.
+                    </p>
+                  </div>
+                </ScrollReveal>
+              </div>
+            </AnimatedBorder>
+          </div>
+        </section>
+
+        {/* Team Section */}
+        <section className="py-12 sm:py-20">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <ScrollReveal>
+              <h2 className="text-3xl font-bold text-gray-900 text-center mb-12">Meet Our Team</h2>
+            </ScrollReveal>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {team.map((member, index) => (
+                <ScrollReveal key={member.name} delay={index * 0.1}>
+                  <TiltCard>
+                    <div className="bg-white/80 backdrop-blur-sm p-6 rounded-2xl shadow-lg">
+                      <div className="aspect-square relative rounded-xl overflow-hidden mb-4">
+                        <img
+                          src={member.image}
+                          alt={member.name}
+                          className="object-cover w-full h-full"
+                        />
+                      </div>
+                      <h3 className="text-xl font-semibold text-gray-900">{member.name}</h3>
+                      <p className="text-primary-600">{member.role}</p>
+                      <p className="mt-2 text-sm text-gray-600">{member.bio}</p>
+                    </div>
+                  </TiltCard>
+                </ScrollReveal>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* CTA Section */}
+        <section className="py-12 sm:py-20">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <AnimatedGradient className="max-w-4xl mx-auto rounded-2xl overflow-hidden">
+              <div className="p-8 sm:p-12 text-center">
+                <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">
+                  Join Our Mission
+                </h2>
+                <p className="text-lg text-white/90 mb-8">
+                  Be part of a team that's shaping the future of business automation.
                 </p>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <ShimmerButton asChild>
+                    <Link href="/careers">View Careers</Link>
+                  </ShimmerButton>
+                  <Button variant="outline" asChild className="text-white border-white hover:bg-white/10">
+                    <Link href="/contact">Contact Us</Link>
+                  </Button>
+                </div>
               </div>
-            </div>
+            </AnimatedGradient>
           </div>
-        </div>
-      </div>
-
-      {/* Values Section */}
-      <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8">
-        <div className="mx-auto max-w-2xl lg:mx-0">
-          <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-            Our Values
-          </h2>
-          <div className="mt-16 grid grid-cols-1 gap-x-8 gap-y-16 sm:grid-cols-2 lg:grid-cols-3">
-            <div>
-              <h3 className="text-xl font-semibold text-gray-900">Simplicity</h3>
-              <p className="mt-4 text-base leading-7 text-gray-600">
-                We believe in making complex things simple. Our platform is designed to be intuitive and easy to use, without sacrificing power or flexibility.
-              </p>
-            </div>
-            <div>
-              <h3 className="text-xl font-semibold text-gray-900">Innovation</h3>
-              <p className="mt-4 text-base leading-7 text-gray-600">
-                We're constantly pushing the boundaries of what's possible in workflow automation, always looking for new ways to help our users achieve more.
-              </p>
-            </div>
-            <div>
-              <h3 className="text-xl font-semibold text-gray-900">Reliability</h3>
-              <p className="mt-4 text-base leading-7 text-gray-600">
-                We understand that your workflows are critical to your business. That's why we prioritize reliability and stability in everything we do.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* CTA Section */}
-      <div className="bg-blue-600">
-        <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8">
-          <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
-              Ready to transform your business?
-            </h2>
-            <p className="mx-auto mt-6 max-w-xl text-lg leading-8 text-blue-100">
-              Join thousands of businesses that are already automating their workflows with ChainReact.
-            </p>
-            <div className="mt-10 flex items-center justify-center gap-x-6">
-              <Button
-                size="lg"
-                className="bg-white text-blue-600 hover:bg-blue-50"
-                asChild
-              >
-                <Link href="/signup">Get Started</Link>
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="text-white border-white hover:bg-blue-500"
-                asChild
-              >
-                <Link href="/features">Learn More</Link>
-              </Button>
-            </div>
-          </div>
-        </div>
-      </div>
+        </section>
+      </main>
     </div>
   );
 } 

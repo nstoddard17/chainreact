@@ -1,6 +1,7 @@
 import './globals.css';
 import { Inter, Space_Grotesk } from 'next/font/google';
 import { Navbar } from '@/components/ui/navbar';
+import { Footer } from '@/components/ui/footer';
 import { AuthProvider } from '@/context/auth-context';
 
 const inter = Inter({
@@ -27,9 +28,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable}`}>
-      <body className={`${inter.className} antialiased bg-background-light`}>
+      <body className={`${inter.className} antialiased min-h-screen flex flex-col`}>
         <AuthProvider>
-          <div className="relative min-h-screen">
+          <div className="relative flex-grow">
             {/* Background Elements */}
             <div className="fixed inset-0 -z-10">
               <div className="absolute inset-0 bg-gradient-to-b from-primary-50 to-background-light" />
@@ -38,10 +39,11 @@ export default function RootLayout({
             </div>
             
             <Navbar />
-            <main className="pt-16">
+            <main className="flex-grow">
               {children}
             </main>
           </div>
+          <Footer />
         </AuthProvider>
       </body>
     </html>
