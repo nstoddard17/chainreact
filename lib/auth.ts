@@ -1,52 +1,37 @@
+import NextAuth from 'next-auth';
 import { PrismaAdapter } from '@auth/prisma-adapter';
-import { NextAuthOptions } from 'next-auth';
-import GoogleProvider from 'next-auth/providers/google';
 import { prisma } from './prisma';
+import Google from 'next-auth/providers/google';
 
-export const authOptions: NextAuthOptions = {
+export const { auth, signIn, signOut } = NextAuth({
   adapter: PrismaAdapter(prisma),
   providers: [
-    GoogleProvider({
+    Google({
       clientId: process.env.GOOGLE_CLIENT_ID!,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
     }),
   ],
   callbacks: {
-    async signIn({ user, account, profile }) {
-      if (account?.provider === 'google') {
-        // Check if user has an invitation
-        const invitation = await prisma.invitation.findFirst({
-          where: {
-            email: user.email!,
-            expiresAt: { gt: new Date() }
-          }
-        });
-
-        if (invitation) {
-          // Create user with organization from invitation
-          await prisma.user.create({
-            data: {
-              email: user.email!,
-              name: user.name,
-              image: user.image,
-              organizationId: invitation.organizationId,
-              emailVerified: new Date(),
-            }
-          });
-
-          // Delete the invitation
-          await prisma.invitation.delete({
-            where: { id: invitation.id }
-          });
-        }
-      }
-      return true;
-    },
     async session({ session, user }) {
       if (session.user) {
         session.user.id = user.id;
         session.user.role = user.role;
         session.user.organizationId = user.organizationId;
+        
+        // Fetch organization details
+        if (user.organizationId) {
+          const organization = await prisma.organization.findUnique({
+            where: { id: user.organizationId },
+          });
+          if (organization) {
+            session.user.organization = {
+              id: organization.id,
+              name: organization.name,
+              website: organization.website,
+              industry: organization.industry,
+            };
+          }
+        }
       }
       return session;
     },
@@ -55,7 +40,4 @@ export const authOptions: NextAuthOptions = {
     signIn: '/login',
     error: '/login',
   },
-  session: {
-    strategy: 'jwt',
-  },
-}; 
+}); 
