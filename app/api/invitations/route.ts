@@ -4,7 +4,7 @@ import { auth } from '@/lib/auth';
 import { Resend } from 'resend';
 import { randomBytes } from 'crypto';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
 
 export async function POST(req: Request) {
   try {
@@ -71,20 +71,22 @@ export async function POST(req: Request) {
       }
     });
 
-    // Send invitation email
-    const inviteUrl = `${process.env.NEXT_PUBLIC_APP_URL}/auth/invite?token=${token}`;
-    await resend.emails.send({
-      from: 'ChainReact <noreply@chainreact.com>',
-      to: email,
-      subject: 'You have been invited to join ChainReact',
-      html: `
-        <h1>Welcome to ChainReact!</h1>
-        <p>You have been invited to join ChainReact. Click the link below to set up your account:</p>
-        <a href="${inviteUrl}">Accept Invitation</a>
-        <p>This invitation will expire in 7 days.</p>
-        <p>If you have a Google account, you can also sign in directly with Google.</p>
-      `
-    });
+    // Send invitation email if Resend is configured
+    if (resend && process.env.NEXT_PUBLIC_APP_URL) {
+      const inviteUrl = `${process.env.NEXT_PUBLIC_APP_URL}/auth/invite?token=${token}`;
+      await resend.emails.send({
+        from: 'ChainReact <noreply@chainreact.com>',
+        to: email,
+        subject: 'You have been invited to join ChainReact',
+        html: `
+          <h1>Welcome to ChainReact!</h1>
+          <p>You have been invited to join ChainReact. Click the link below to set up your account:</p>
+          <a href="${inviteUrl}">Accept Invitation</a>
+          <p>This invitation will expire in 7 days.</p>
+          <p>If you have a Google account, you can also sign in directly with Google.</p>
+        `
+      });
+    }
 
     return NextResponse.json({ success: true, invitation });
   } catch (error) {
