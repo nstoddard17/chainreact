@@ -96,7 +96,7 @@ function LoginForm() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100 py-12 px-4 sm:px-6 lg:px-8 mt-16">
       <div className="max-w-md w-full space-y-8">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
@@ -104,7 +104,7 @@ function LoginForm() {
           transition={{ duration: 0.5 }}
           className="text-center"
         >
-          <h2 className="mt-6 text-3xl font-extrabold text-gray-900">
+          <h2 className="text-3xl font-extrabold text-gray-900">
             {isSignup ? 'Create your account' : 'Welcome back'}
           </h2>
           <p className="mt-2 text-sm text-gray-600">
@@ -193,7 +193,7 @@ function LoginForm() {
             )}
           </div>
 
-          <div>
+          <div className="w-full">
             <ButtonVariants
               type="submit"
               isLoading={isLoading}
@@ -213,11 +213,11 @@ function LoginForm() {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-2 gap-4 w-full">
             <ButtonVariants
               type="button"
               onClick={handleGoogleSignIn}
-              className="w-full bg-white text-gray-700 border border-gray-300 hover:bg-gray-50 px-6 py-4 text-base font-semibold rounded-xl shadow-sm hover:shadow transition-all duration-200"
+              className="w-full bg-white text-gray-700 border border-gray-300 hover:bg-gray-50 px-6 py-4 text-base font-semibold rounded-xl shadow-sm hover:shadow transition-all duration-200 flex items-center justify-center"
             >
               <Mail className="h-5 w-5 mr-2" />
               Google
@@ -225,7 +225,7 @@ function LoginForm() {
             <ButtonVariants
               type="button"
               onClick={handleGithubSignIn}
-              className="w-full bg-white text-gray-700 border border-gray-300 hover:bg-gray-50 px-6 py-4 text-base font-semibold rounded-xl shadow-sm hover:shadow transition-all duration-200"
+              className="w-full bg-white text-gray-700 border border-gray-300 hover:bg-gray-50 px-6 py-4 text-base font-semibold rounded-xl shadow-sm hover:shadow transition-all duration-200 flex items-center justify-center"
             >
               <Github className="h-5 w-5 mr-2" />
               GitHub
