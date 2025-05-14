@@ -1,7 +1,8 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { usePathname, useSearchParams } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Menu, X } from 'lucide-react';
@@ -16,6 +17,24 @@ const navigation = [
 
 export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const isLoginPage = pathname === '/login';
+  const isSignup = searchParams?.get('signup') === 'true';
+
+  const getLoginLink = () => {
+    if (isLoginPage && isSignup) {
+      return '/login';
+    }
+    return '/login';
+  };
+
+  const getSignupLink = () => {
+    if (isLoginPage && !isSignup) {
+      return '/login?signup=true';
+    }
+    return '/login?signup=true';
+  };
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 bg-white/80 backdrop-blur-sm">
@@ -48,10 +67,10 @@ export function Navbar() {
         </div>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end lg:gap-x-6">
           <Button variant="ghost" asChild>
-            <Link href="/login">Log in</Link>
+            <Link href={getLoginLink()}>Log in</Link>
           </Button>
           <Button asChild>
-            <Link href="/login?signup=true">Get started</Link>
+            <Link href={getSignupLink()}>Get started</Link>
           </Button>
         </div>
       </nav>
@@ -95,10 +114,10 @@ export function Navbar() {
                   </div>
                   <div className="py-6">
                     <Button variant="ghost" className="w-full justify-center" asChild>
-                      <Link href="/login">Log in</Link>
+                      <Link href={getLoginLink()} onClick={() => setMobileMenuOpen(false)}>Log in</Link>
                     </Button>
                     <Button className="mt-4 w-full justify-center" asChild>
-                      <Link href="/login?signup=true">Get started</Link>
+                      <Link href={getSignupLink()} onClick={() => setMobileMenuOpen(false)}>Get started</Link>
                     </Button>
                   </div>
                 </div>

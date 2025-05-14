@@ -193,7 +193,7 @@ function LoginForm() {
               type="submit"
               isLoading={isLoading}
               disabled={isLoading}
-              className="w-full bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-200"
+              className="w-full bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-200 rounded-lg"
             >
               {isSignup ? 'Create Account' : 'Sign in'}
             </ButtonVariants>
@@ -213,7 +213,7 @@ function LoginForm() {
               type="button"
               variant="outline"
               onClick={handleGoogleSignIn}
-              className="w-full border-2 border-gray-300 hover:border-gray-400 bg-white text-gray-700 hover:bg-gray-50 px-6 py-3 text-base font-semibold shadow-sm hover:shadow transition-all duration-200 flex items-center justify-center gap-2"
+              className="w-full border-2 border-gray-300 hover:border-gray-400 bg-white text-gray-700 hover:bg-gray-50 px-6 py-4 text-base font-semibold shadow-sm hover:shadow transition-all duration-200 flex items-center justify-center gap-2 rounded-lg"
             >
               <svg className="w-5 h-5" viewBox="0 0 24 24">
                 <path
@@ -239,7 +239,7 @@ function LoginForm() {
               type="button"
               variant="outline"
               onClick={handleGithubSignIn}
-              className="w-full border-2 border-gray-300 hover:border-gray-400 bg-white text-gray-700 hover:bg-gray-50 px-6 py-3 text-base font-semibold shadow-sm hover:shadow transition-all duration-200 flex items-center justify-center gap-2"
+              className="w-full border-2 border-gray-300 hover:border-gray-400 bg-white text-gray-700 hover:bg-gray-50 px-6 py-4 text-base font-semibold shadow-sm hover:shadow transition-all duration-200 flex items-center justify-center gap-2 rounded-lg"
             >
               <Github className="w-5 h-5" />
               GitHub
