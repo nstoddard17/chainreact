@@ -1,17 +1,22 @@
 'use client';
 
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { Button } from '@/components/ui/button';
-import { ScrollReveal, AnimatedText, FloatingElement, ShimmerButton } from '@/components/ui/micro-interactions';
-import { ParallaxSection, TiltCard, AnimatedGradient, AnimatedBorder } from '@/components/ui/interactive-elements';
+import Image from 'next/image';
+import { ButtonVariants } from '@/components/ui/button-variants';
+import { ScrollReveal } from '@/components/ui/micro-interactions';
+import { AnimatedText } from '@/components/ui/micro-interactions';
+import { FloatingElement } from '@/components/ui/micro-interactions';
+import { ShimmerButton } from '@/components/ui/micro-interactions';
+import { TiltCard } from '@/components/ui/interactive-elements';
 import { AnimatedCounter } from '@/components/ui/interactive-elements';
+import { animations } from '@/lib/design';
 
 const stats = [
-  { label: 'Active Users', value: 10000, suffix: '+' },
+  { label: 'Active Users', value: 100000, suffix: '+' },
   { label: 'Countries', value: 50, suffix: '+' },
   { label: 'Success Rate', value: 99, suffix: '%' },
-  { label: 'Support Team', value: 24, suffix: '/7' },
+  { label: 'Support Team', value: 24, suffix: '/7' }
 ];
 
 const team = [
@@ -19,166 +24,206 @@ const team = [
     name: 'Sarah Johnson',
     role: 'CEO & Founder',
     image: '/team/sarah.jpg',
-    bio: 'Former tech executive with 15+ years of experience in enterprise software.',
+    bio: 'Former tech executive with 15+ years of experience in software development and team leadership.'
   },
   {
     name: 'Michael Chen',
     role: 'CTO',
     image: '/team/michael.jpg',
-    bio: 'Ex-Google engineer specializing in scalable architecture and AI.',
+    bio: 'Expert in cloud architecture and distributed systems with a passion for scalable solutions.'
   },
   {
     name: 'Emily Rodriguez',
-    role: 'Head of Product',
+    role: 'Head of Design',
     image: '/team/emily.jpg',
-    bio: 'Product leader with a track record of successful SaaS launches.',
+    bio: 'Award-winning designer with a focus on creating intuitive and beautiful user experiences.'
   },
   {
     name: 'David Kim',
-    role: 'Head of Design',
+    role: 'Head of Product',
     image: '/team/david.jpg',
-    bio: 'Award-winning designer focused on creating intuitive user experiences.',
-  },
+    bio: 'Product strategist with a track record of launching successful products in the enterprise space.'
+  }
 ];
 
 export default function AboutPage() {
-  const { scrollYProgress } = useScroll();
-  const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
-  const scale = useTransform(scrollYProgress, [0, 0.2], [1, 0.8]);
-
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
-      <motion.div
-        style={{ opacity, scale }}
-        className="fixed inset-0 pointer-events-none"
-      >
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary-600/10 via-transparent to-transparent" />
-      </motion.div>
-
-      <main className="relative">
-        {/* Hero Section */}
-        <section className="relative py-12 sm:py-20 overflow-hidden">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-3xl mx-auto text-center">
-              <AnimatedText
-                text="Our Mission"
-                className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-6"
-              />
-              <AnimatedText
-                text="We're on a mission to revolutionize how businesses operate by making automation accessible to everyone."
-                className="text-lg sm:text-xl text-gray-600 mb-8"
-              />
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <ShimmerButton asChild>
-                  <Link href="/login#signup">Join Our Team</Link>
-                </ShimmerButton>
-                <Button variant="outline" asChild>
-                  <Link href="/contact">Contact Us</Link>
-                </Button>
-              </div>
-            </div>
+      {/* Hero Section */}
+      <section className="relative py-24 sm:py-32 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary-600 to-primary-700 opacity-90" />
+        <div className="absolute inset-0 bg-grid-white/10" />
+        <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="mx-auto max-w-2xl text-center">
+            <AnimatedText
+              text="Our Mission"
+              className="text-4xl font-bold tracking-tight text-white sm:text-6xl"
+            />
+            <p className="mt-6 text-lg leading-8 text-primary-100">
+              We're on a mission to empower developers and teams to build better software, faster.
+              Our platform combines cutting-edge technology with intuitive design to create the
+              perfect development environment.
+            </p>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Stats Section */}
-        <section className="py-12 sm:py-20">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-              {stats.map((stat, index) => (
-                <ScrollReveal key={stat.label} delay={index * 0.1}>
-                  <TiltCard>
-                    <div className="bg-white/80 backdrop-blur-sm p-6 rounded-2xl shadow-lg">
+      {/* Stats Section */}
+      <section className="py-24 sm:py-32">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="mx-auto max-w-2xl lg:max-w-none">
+            <div className="text-center">
+              <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+                Trusted by developers worldwide
+              </h2>
+              <p className="mt-4 text-lg leading-8 text-gray-600">
+                Our platform has helped thousands of teams build and scale their applications.
+              </p>
+            </div>
+            <dl className="mt-16 grid grid-cols-1 gap-0.5 overflow-hidden rounded-2xl text-center sm:grid-cols-2 lg:grid-cols-4">
+              {stats.map((stat) => (
+                <ScrollReveal key={stat.label}>
+                  <div className="flex flex-col bg-white p-8">
+                    <dt className="text-sm font-semibold leading-6 text-gray-600">
+                      {stat.label}
+                    </dt>
+                    <dd className="order-first text-3xl font-semibold tracking-tight text-gray-900">
                       <AnimatedCounter
                         end={stat.value}
                         suffix={stat.suffix}
-                        className="text-4xl font-bold text-primary-600"
+                        duration={2}
                       />
-                      <p className="mt-2 text-sm text-gray-600">{stat.label}</p>
-                    </div>
-                  </TiltCard>
-                </ScrollReveal>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Story Section */}
-        <section className="py-12 sm:py-20">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <AnimatedBorder className="max-w-4xl mx-auto">
-              <div className="bg-white rounded-lg p-8 sm:p-12">
-                <ScrollReveal>
-                  <h2 className="text-3xl font-bold text-gray-900 mb-6">Our Story</h2>
-                  <div className="prose prose-lg text-gray-600">
-                    <p>
-                      Founded in 2023, our company emerged from a simple observation: businesses were struggling with complex,
-                      outdated workflows that hindered growth and innovation. We set out to change that by creating a platform
-                      that makes automation accessible to everyone.
-                    </p>
-                    <p className="mt-4">
-                      Today, we're proud to serve thousands of businesses worldwide, helping them streamline their operations
-                      and focus on what matters most: growth and innovation.
-                    </p>
+                    </dd>
                   </div>
                 </ScrollReveal>
-              </div>
-            </AnimatedBorder>
-          </div>
-        </section>
-
-        {/* Team Section */}
-        <section className="py-12 sm:py-20">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <ScrollReveal>
-              <h2 className="text-3xl font-bold text-gray-900 text-center mb-12">Meet Our Team</h2>
-            </ScrollReveal>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {team.map((member, index) => (
-                <ScrollReveal key={member.name} delay={index * 0.1}>
-                  <TiltCard>
-                    <div className="bg-white/80 backdrop-blur-sm p-6 rounded-2xl shadow-lg">
-                      <div className="aspect-square relative rounded-xl overflow-hidden mb-4">
-                        <img
-                          src={member.image}
-                          alt={member.name}
-                          className="object-cover w-full h-full"
-                        />
-                      </div>
-                      <h3 className="text-xl font-semibold text-gray-900">{member.name}</h3>
-                      <p className="text-primary-600">{member.role}</p>
-                      <p className="mt-2 text-sm text-gray-600">{member.bio}</p>
-                    </div>
-                  </TiltCard>
-                </ScrollReveal>
               ))}
-            </div>
+            </dl>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* CTA Section */}
-        <section className="py-12 sm:py-20">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <AnimatedGradient className="max-w-4xl mx-auto rounded-2xl overflow-hidden">
-              <div className="p-8 sm:p-12 text-center">
-                <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">
-                  Join Our Mission
-                </h2>
-                <p className="text-lg text-white/90 mb-8">
-                  Be part of a team that's shaping the future of business automation.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <ShimmerButton asChild>
-                    <Link href="/careers">View Careers</Link>
-                  </ShimmerButton>
-                  <Button variant="outline" asChild className="text-white border-white hover:bg-white/10">
-                    <Link href="/contact">Contact Us</Link>
-                  </Button>
-                </div>
-              </div>
-            </AnimatedGradient>
+      {/* Story Section */}
+      <section className="py-24 sm:py-32">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="mx-auto max-w-2xl lg:mx-0">
+            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+              Our Story
+            </h2>
+            <p className="mt-6 text-lg leading-8 text-gray-600">
+              Founded in 2020, we set out to revolutionize how teams build and deploy applications.
+              What started as a small team of passionate developers has grown into a global platform
+              trusted by thousands of teams worldwide.
+            </p>
           </div>
-        </section>
-      </main>
+          <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-8 lg:mx-0 lg:max-w-none lg:grid-cols-2">
+            <ScrollReveal>
+              <div className="flex flex-col gap-8">
+                <p className="text-lg leading-8 text-gray-600">
+                  Our journey began when we noticed a gap in the market for a truly developer-friendly
+                  platform that combined powerful features with an intuitive interface. We spent months
+                  talking to developers, understanding their pain points, and designing solutions that
+                  would make their lives easier.
+                </p>
+                <p className="text-lg leading-8 text-gray-600">
+                  Today, we're proud to offer a platform that not only meets but exceeds the needs of
+                  modern development teams. From startups to enterprises, our tools help teams build
+                  better software, faster.
+                </p>
+              </div>
+            </ScrollReveal>
+            <ScrollReveal>
+              <div className="flex flex-col gap-8">
+                <p className="text-lg leading-8 text-gray-600">
+                  Our commitment to innovation and user experience has earned us recognition in the
+                  industry, but our greatest achievement is the success of our users. We're constantly
+                  evolving our platform based on user feedback and emerging technologies.
+                </p>
+                <p className="text-lg leading-8 text-gray-600">
+                  As we look to the future, we remain focused on our mission: to empower developers
+                  and teams to build better software. We're excited to continue this journey with
+                  our growing community of users.
+                </p>
+              </div>
+            </ScrollReveal>
+          </div>
+        </div>
+      </section>
+
+      {/* Team Section */}
+      <section className="py-24 sm:py-32">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="mx-auto max-w-2xl lg:mx-0">
+            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+              Meet our team
+            </h2>
+            <p className="mt-6 text-lg leading-8 text-gray-600">
+              We're a diverse team of passionate individuals working together to build the future of
+              software development.
+            </p>
+          </div>
+          <ul
+            role="list"
+            className="mx-auto mt-20 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-4"
+          >
+            {team.map((person) => (
+              <ScrollReveal key={person.name}>
+                <TiltCard>
+                  <li className="relative">
+                    <div className="aspect-[3/2] w-full overflow-hidden rounded-2xl">
+                      <Image
+                        src={person.image}
+                        alt={person.name}
+                        width={500}
+                        height={300}
+                        className="object-cover"
+                      />
+                    </div>
+                    <h3 className="mt-6 text-lg font-semibold leading-8 tracking-tight text-gray-900">
+                      {person.name}
+                    </h3>
+                    <p className="text-base leading-7 text-primary-600">{person.role}</p>
+                    <p className="mt-4 text-base leading-7 text-gray-600">{person.bio}</p>
+                  </li>
+                </TiltCard>
+              </ScrollReveal>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="relative isolate mt-32 px-6 py-32 sm:mt-56 sm:py-40 lg:px-8">
+        <div className="absolute inset-0 -z-10 overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-br from-primary-600 to-primary-700 opacity-90" />
+          <div className="absolute inset-0 bg-grid-white/10" />
+        </div>
+        <div className="mx-auto max-w-2xl text-center">
+          <FloatingElement>
+            <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+              Join our mission
+            </h2>
+            <p className="mx-auto mt-6 max-w-xl text-lg leading-8 text-primary-100">
+              We're always looking for talented individuals to join our team and help us build the
+              future of software development.
+            </p>
+            <div className="mt-10 flex items-center justify-center gap-x-6">
+              <ShimmerButton
+                className="bg-white text-primary-600 hover:bg-primary-50"
+                asChild
+              >
+                <Link href="/login?signup=true">Join Our Team</Link>
+              </ShimmerButton>
+              <ButtonVariants
+                variant="outline"
+                className="border-white text-white hover:bg-white/10"
+                asChild
+              >
+                <Link href="/contact">Contact Us</Link>
+              </ButtonVariants>
+            </div>
+          </FloatingElement>
+        </div>
+      </section>
     </div>
   );
 } 
