@@ -10,8 +10,8 @@ declare module 'next-auth' {
       organization?: {
         id: string;
         name: string;
-        website: string | null;
-        industry: string | null;
+        website?: string;
+        industry?: string;
       };
     } & DefaultSession['user'];
   }
