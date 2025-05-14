@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 
 export default function AboutPage() {
@@ -109,15 +110,17 @@ export default function AboutPage() {
               <Button
                 size="lg"
                 className="bg-white text-blue-600 hover:bg-blue-50"
+                asChild
               >
-                Get Started
+                <Link href="/signup">Get Started</Link>
               </Button>
               <Button
                 size="lg"
                 variant="outline"
                 className="text-white border-white hover:bg-blue-500"
+                asChild
               >
-                Learn More
+                <Link href="/features">Learn More</Link>
               </Button>
             </div>
           </div>
