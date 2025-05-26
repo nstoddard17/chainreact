@@ -24,13 +24,13 @@ const features = [
 
 export function FeatureHighlights() {
   return (
-    <section className="py-24 bg-gray-50">
+    <section className="py-24 bg-card rounded-xl shadow-lg pt-8">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center">
-          <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+          <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
             Powerful Features
           </h2>
-          <p className="mt-4 text-lg text-gray-600">
+          <p className="mt-4 text-lg text-muted-foreground">
             Everything you need to automate your business
           </p>
         </div>
@@ -43,16 +43,16 @@ export function FeatureHighlights() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.2 }}
             >
-              <Card className="h-full hover:shadow-lg transition-shadow">
+              <Card className="h-full bg-background rounded-lg shadow-lg hover:shadow-xl transition-shadow">
                 <CardHeader>
-                  <div className="w-12 h-12 rounded-lg bg-blue-100 flex items-center justify-center mb-4">
-                    <feature.icon className="w-6 h-6 text-blue-600" />
+                  <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+                    <feature.icon className="w-6 h-6 text-primary" />
                   </div>
-                  <CardTitle>{feature.title}</CardTitle>
-                  <CardDescription>{feature.description}</CardDescription>
+                  <CardTitle className="text-foreground">{feature.title}</CardTitle>
+                  <CardDescription className="text-muted-foreground">{feature.description}</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <div className="flex items-center text-sm text-blue-600">
+                  <div className="flex items-center text-sm text-primary">
                     Learn more
                     <svg
                       className="ml-2 w-4 h-4"

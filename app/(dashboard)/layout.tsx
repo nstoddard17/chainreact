@@ -29,7 +29,7 @@ export default function DashboardLayout({
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-background">
       <DashboardNav />
       <div className="lg:pl-64">
         {children}

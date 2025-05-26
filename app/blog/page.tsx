@@ -64,30 +64,28 @@ export default function BlogPage() {
   const recentPosts = blogPosts.slice(1);
 
   return (
-    <div className="bg-white">
+    <div className="min-h-screen bg-background pt-32 pb-12 px-4">
       {/* Hero Section */}
-      <div className="relative isolate overflow-hidden bg-gradient-to-b from-blue-50 to-white">
-        <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="mx-auto max-w-3xl text-center"
-          >
-            <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-              Blog
-            </h1>
-            <p className="mt-6 text-lg leading-8 text-gray-600">
-              Insights, tutorials, and updates from the ChainReact team
-            </p>
-          </motion.div>
-        </div>
-      </div>
+      <section className="bg-card rounded-xl shadow-lg p-8 text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="mx-auto max-w-3xl text-center"
+        >
+          <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-6xl">
+            Blog
+          </h1>
+          <p className="mt-6 text-lg leading-8 text-muted-foreground">
+            Insights, tutorials, and updates from the ChainReact team
+          </p>
+        </motion.div>
+      </section>
 
       {/* Featured Post */}
-      <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8">
+      <section className="bg-card rounded-xl shadow-lg p-8 mt-12">
         <div className="mx-auto max-w-3xl text-center">
-          <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+          <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
             Featured Post
           </h2>
         </div>
@@ -142,12 +140,12 @@ export default function BlogPage() {
             </div>
           </article>
         </div>
-      </div>
+      </section>
 
       {/* Recent Posts */}
-      <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8">
+      <section className="bg-card rounded-xl shadow-lg p-8 mt-12">
         <div className="mx-auto max-w-3xl text-center">
-          <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+          <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
             Recent Posts
           </h2>
         </div>
@@ -210,7 +208,7 @@ export default function BlogPage() {
             </motion.article>
           ))}
         </div>
-      </div>
+      </section>
 
       {/* Newsletter Section */}
       <div className="bg-blue-600">

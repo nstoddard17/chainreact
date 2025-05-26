@@ -96,7 +96,7 @@ function LoginForm() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100 py-12 px-4 sm:px-6 lg:px-8 mt-16">
+    <div className="min-h-screen flex items-center justify-center bg-card py-12 px-4 sm:px-6 lg:px-8 mt-16">
       <div className="max-w-md w-full space-y-8">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
@@ -104,16 +104,16 @@ function LoginForm() {
           transition={{ duration: 0.5 }}
           className="text-center"
         >
-          <h2 className="text-3xl font-extrabold text-gray-900">
+          <h2 className="text-3xl font-extrabold text-foreground">
             {isSignup ? 'Create your account' : 'Welcome back'}
           </h2>
-          <p className="mt-2 text-sm text-gray-600">
+          <p className="mt-2 text-sm text-muted-foreground">
             {isSignup
               ? 'Already have an account?'
               : "Don't have an account?"}{' '}
             <button
               onClick={toggleAuthMode}
-              className="font-medium text-primary-600 hover:text-primary-500 transition-colors duration-200"
+              className="font-medium text-primary hover:text-primary-foreground transition-colors duration-200"
             >
               {isSignup ? 'Sign in' : 'Sign up'}
             </button>
@@ -126,7 +126,7 @@ function LoginForm() {
           animate="visible"
           transition={{ duration: 0.5, delay: 0.2 }}
           onSubmit={handleSubmit}
-          className="mt-8 space-y-6 bg-white p-8 rounded-xl shadow-lg w-full"
+          className="mt-8 space-y-6 bg-card p-8 rounded-xl shadow-lg w-full"
         >
           <div className="space-y-4">
             {isSignup && (
@@ -175,7 +175,7 @@ function LoginForm() {
                   />
                   <Label
                     htmlFor="remember"
-                    className="ml-2 block text-sm text-gray-900"
+                    className="ml-2 block text-sm text-foreground"
                   >
                     Remember me
                   </Label>
@@ -184,7 +184,7 @@ function LoginForm() {
                 <div className="text-sm">
                   <a
                     href="#"
-                    className="font-medium text-primary-600 hover:text-primary-500 transition-colors duration-200"
+                    className="font-medium text-primary hover:text-primary-foreground transition-colors duration-200"
                   >
                     Forgot your password?
                   </a>
@@ -198,7 +198,7 @@ function LoginForm() {
               type="submit"
               isLoading={isLoading}
               disabled={isLoading}
-              className="w-full bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-200 rounded-xl"
+              className="w-full"
             >
               {isSignup ? 'Create Account' : 'Sign in'}
             </ButtonVariants>
@@ -206,10 +206,10 @@ function LoginForm() {
 
           <div className="relative">
             <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t border-gray-300" />
+              <div className="w-full border-t border-border" />
             </div>
             <div className="relative flex justify-center text-sm">
-              <span className="bg-white px-2 text-gray-500">Or continue with</span>
+              <span className="bg-card px-2 text-muted-foreground">Or continue with</span>
             </div>
           </div>
 
@@ -217,7 +217,7 @@ function LoginForm() {
             <ButtonVariants
               type="button"
               onClick={handleGoogleSignIn}
-              className="w-full bg-white text-gray-700 border border-gray-300 hover:bg-gray-50 px-6 py-4 text-base font-semibold rounded-xl shadow-sm hover:shadow transition-all duration-200"
+              className="w-full bg-card text-foreground border border-border hover:bg-muted px-6 py-4 text-base font-semibold rounded-xl shadow-sm hover:shadow transition-all duration-200"
             >
               <Mail className="h-5 w-5 mr-2" />
               Google
@@ -225,7 +225,7 @@ function LoginForm() {
             <ButtonVariants
               type="button"
               onClick={handleGithubSignIn}
-              className="w-full bg-white text-gray-700 border border-gray-300 hover:bg-gray-50 px-6 py-4 text-base font-semibold rounded-xl shadow-sm hover:shadow transition-all duration-200"
+              className="w-full bg-card text-foreground border border-border hover:bg-muted px-6 py-4 text-base font-semibold rounded-xl shadow-sm hover:shadow transition-all duration-200"
             >
               <Github className="h-5 w-5 mr-2" />
               GitHub
@@ -233,13 +233,13 @@ function LoginForm() {
           </div>
 
           {isSignup && (
-            <p className="text-xs text-center text-gray-500">
+            <p className="text-xs text-center text-muted-foreground">
               By signing up, you agree to our{' '}
-              <a href="/terms" className="text-primary-600 hover:text-primary-500 transition-colors duration-200">
+              <a href="/terms" className="text-primary hover:text-primary-foreground transition-colors duration-200">
                 Terms of Service
               </a>{' '}
               and{' '}
-              <a href="/privacy" className="text-primary-600 hover:text-primary-500 transition-colors duration-200">
+              <a href="/privacy" className="text-primary hover:text-primary-foreground transition-colors duration-200">
                 Privacy Policy
               </a>
             </p>

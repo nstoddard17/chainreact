@@ -90,10 +90,10 @@ export default function SettingsPage() {
           transition={{ duration: 0.5 }}
           className="mb-8"
         >
-          <h1 className="text-3xl font-bold text-gray-900">
+          <h1 className="text-3xl font-bold text-foreground">
             Settings
           </h1>
-          <p className="mt-2 text-gray-600">
+          <p className="mt-2 text-muted-foreground">
             Manage your organization settings and preferences.
           </p>
         </motion.div>
@@ -105,15 +105,15 @@ export default function SettingsPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-white rounded-lg shadow p-6 hover:shadow-lg transition-shadow"
+              className="bg-card rounded-lg shadow p-6 hover:shadow-lg transition-shadow"
             >
               <div className={`${setting.color} w-12 h-12 rounded-lg flex items-center justify-center mb-4`}>
                 <setting.icon className="w-6 h-6 text-white" />
               </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">
+              <h3 className="text-lg font-semibold text-foreground mb-2">
                 {setting.title}
               </h3>
-              <p className="text-gray-600 mb-4">
+              <p className="text-muted-foreground mb-4">
                 {setting.description}
               </p>
               <ButtonVariants
@@ -132,14 +132,14 @@ export default function SettingsPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
-          className="bg-white rounded-lg shadow p-6"
+          className="bg-card rounded-lg shadow p-6"
         >
-          <h2 className="text-xl font-semibold text-gray-900 mb-6">
+          <h2 className="text-xl font-semibold text-foreground mb-6">
             Organization Details
           </h2>
           <form onSubmit={handleUpdateOrganization} className="space-y-6">
             <div>
-              <label htmlFor="name" className="block text-sm font-medium text-gray-700">
+              <label htmlFor="name" className="block text-sm font-medium text-foreground">
                 Organization Name
               </label>
               <input
@@ -153,7 +153,7 @@ export default function SettingsPage() {
             </div>
 
             <div>
-              <label htmlFor="website" className="block text-sm font-medium text-gray-700">
+              <label htmlFor="website" className="block text-sm font-medium text-foreground">
                 Website
               </label>
               <input
@@ -166,7 +166,7 @@ export default function SettingsPage() {
             </div>
 
             <div>
-              <label htmlFor="industry" className="block text-sm font-medium text-gray-700">
+              <label htmlFor="industry" className="block text-sm font-medium text-foreground">
                 Industry
               </label>
               <input

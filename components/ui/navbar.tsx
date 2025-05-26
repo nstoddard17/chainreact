@@ -38,17 +38,17 @@ function NavbarContent() {
   };
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 bg-white/80 backdrop-blur-sm">
+    <header className="fixed inset-x-0 top-0 z-50 bg-card/80 backdrop-blur-sm">
       <nav className="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
         <div className="flex lg:flex-1">
           <Link href="/" className="-m-1.5 p-1.5">
-            <span className="text-xl font-bold text-gray-900">ChainReact</span>
+            <span className="text-xl font-bold text-foreground">ChainReact</span>
           </Link>
         </div>
         <div className="flex lg:hidden">
           <button
             type="button"
-            className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
+            className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-muted-foreground"
             onClick={() => setMobileMenuOpen(true)}
           >
             <span className="sr-only">Open main menu</span>
@@ -60,7 +60,7 @@ function NavbarContent() {
             <Link
               key={item.name}
               href={item.href}
-              className="text-sm font-semibold leading-6 text-gray-900 hover:text-blue-600 transition-colors duration-200"
+              className="text-sm font-semibold leading-6 text-foreground hover:text-primary transition-colors duration-200"
             >
               {item.name}
             </Link>
@@ -69,13 +69,13 @@ function NavbarContent() {
         <div className="hidden lg:flex lg:flex-1 lg:justify-end lg:gap-x-6">
           <Button 
             variant="ghost" 
-            className="text-gray-900 hover:text-blue-600 hover:bg-transparent transition-colors duration-200"
+            className="text-foreground hover:text-primary hover:bg-transparent transition-colors duration-200"
             asChild
           >
             <Link href={getLoginLink()}>Log in</Link>
           </Button>
           <Button 
-            className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2.5 rounded-xl shadow-sm hover:shadow transition-all duration-200"
+            className="bg-primary hover:bg-primary/90 text-primary-foreground px-6 py-2.5 rounded-xl shadow-sm hover:shadow transition-all duration-200"
             asChild
           >
             <Link href={getSignupLink()}>Get started</Link>

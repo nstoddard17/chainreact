@@ -12,29 +12,29 @@ export default function ChainReactApp() {
   const [message, setMessage] = useState("");
 
   return (
-    <section className="min-h-screen bg-gradient-to-b from-gray-50 to-white py-12 px-4 sm:px-6">
+    <section className="min-h-screen bg-background py-12 px-4 sm:px-6">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-12">
           <h1 className="text-5xl font-bold gradient-text mb-4">
             ChainReact Automation Hub
           </h1>
-          <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
             Streamline your workflow with intelligent automation and AI-powered assistance
           </p>
         </div>
 
         <Tabs defaultValue="dashboard" className="space-y-8">
-          <TabsList className="flex flex-wrap gap-2 mb-6 bg-white p-2 rounded-xl shadow-sm border">
-            <TabsTrigger value="dashboard" className="data-[state=active]:bg-primary data-[state=active]:text-white">
+          <TabsList className="flex flex-wrap gap-2 mb-6 bg-card p-2 rounded-xl shadow-sm border">
+            <TabsTrigger value="dashboard" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
               Dashboard
             </TabsTrigger>
-            <TabsTrigger value="workflows" className="data-[state=active]:bg-primary data-[state=active]:text-white">
+            <TabsTrigger value="workflows" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
               Workflows
             </TabsTrigger>
-            <TabsTrigger value="integrations" className="data-[state=active]:bg-primary data-[state=active]:text-white">
+            <TabsTrigger value="integrations" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
               Integrations
             </TabsTrigger>
-            <TabsTrigger value="assistant" className="data-[state=active]:bg-primary data-[state=active]:text-white">
+            <TabsTrigger value="assistant" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
               AI Assistant
             </TabsTrigger>
           </TabsList>
@@ -43,34 +43,34 @@ export default function ChainReactApp() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               <Card className="card-hover">
                 <CardHeader>
-                  <CardTitle className="text-xl">Weekly Overview</CardTitle>
+                  <CardTitle className="text-xl text-foreground">Weekly Overview</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="space-y-2">
                     <div className="flex justify-between text-sm">
-                      <span className="text-gray-600">Tasks Automated</span>
-                      <span className="font-semibold">124</span>
+                      <span className="text-muted-foreground">Tasks Automated</span>
+                      <span className="font-semibold text-foreground">124</span>
                     </div>
                     <Progress value={75} className="h-2" />
                   </div>
                   <div className="pt-4">
-                    <Badge className="bg-green-100 text-green-800">+12% from last week</Badge>
+                    <Badge className="bg-green-600 text-white">+12% from last week</Badge>
                   </div>
                 </CardContent>
               </Card>
 
               <Card className="card-hover">
                 <CardHeader>
-                  <CardTitle className="text-xl">Active Workflows</CardTitle>
+                  <CardTitle className="text-xl text-foreground">Active Workflows</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-3">
                     <div className="flex items-center justify-between">
-                      <span className="text-gray-600">Client Intake</span>
+                      <span className="text-muted-foreground">Client Intake</span>
                       <Badge variant="secondary">Active</Badge>
                     </div>
                     <div className="flex items-center justify-between">
-                      <span className="text-gray-600">Invoice Processing</span>
+                      <span className="text-muted-foreground">Invoice Processing</span>
                       <Badge variant="secondary">Active</Badge>
                     </div>
                   </div>
@@ -79,17 +79,17 @@ export default function ChainReactApp() {
 
               <Card className="card-hover">
                 <CardHeader>
-                  <CardTitle className="text-xl">System Health</CardTitle>
+                  <CardTitle className="text-xl text-foreground">System Health</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-3">
                     <div className="flex items-center justify-between">
-                      <span className="text-gray-600">API Status</span>
-                      <Badge className="bg-green-100 text-green-800">Healthy</Badge>
+                      <span className="text-muted-foreground">API Status</span>
+                      <Badge className="bg-green-600 text-white">Healthy</Badge>
                     </div>
                     <div className="flex items-center justify-between">
-                      <span className="text-gray-600">Response Time</span>
-                      <span className="text-sm font-medium">245ms</span>
+                      <span className="text-muted-foreground">Response Time</span>
+                      <span className="text-sm font-medium text-foreground">245ms</span>
                     </div>
                   </div>
                 </CardContent>
@@ -100,7 +100,7 @@ export default function ChainReactApp() {
           <TabsContent value="workflows" className="space-y-6">
             <Card className="card-hover">
               <CardHeader>
-                <CardTitle className="text-xl">Active Workflows</CardTitle>
+                <CardTitle className="text-xl text-foreground">Active Workflows</CardTitle>
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="grid gap-4">
@@ -109,8 +109,8 @@ export default function ChainReactApp() {
                     { name: "Stripe Payment → Update Inventory + Notify Team", status: "Active" },
                     { name: "Lead Capture → CRM Update + Slack Alert", status: "Active" }
                   ].map((workflow, index) => (
-                    <div key={index} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
-                      <span className="text-gray-700">{workflow.name}</span>
+                    <div key={index} className="flex items-center justify-between p-4 bg-card rounded-lg">
+                      <span className="text-foreground">{workflow.name}</span>
                       <Badge variant="secondary">{workflow.status}</Badge>
                     </div>
                   ))}
@@ -125,7 +125,7 @@ export default function ChainReactApp() {
           <TabsContent value="integrations" className="space-y-6">
             <Card className="card-hover">
               <CardHeader>
-                <CardTitle className="text-xl">Connected Services</CardTitle>
+                <CardTitle className="text-xl text-foreground">Connected Services</CardTitle>
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="grid gap-4">
@@ -136,10 +136,10 @@ export default function ChainReactApp() {
                     { name: "Slack", icon: "💬", status: "Connected" },
                     { name: "Discord", icon: "🎮", status: "Connected" }
                   ].map((integration, index) => (
-                    <div key={index} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                    <div key={index} className="flex items-center justify-between p-4 bg-card rounded-lg">
                       <div className="flex items-center gap-3">
                         <span className="text-xl">{integration.icon}</span>
-                        <span className="text-gray-700">{integration.name}</span>
+                        <span className="text-foreground">{integration.name}</span>
                       </div>
                       <Badge variant="secondary">{integration.status}</Badge>
                     </div>
@@ -155,27 +155,27 @@ export default function ChainReactApp() {
           <TabsContent value="assistant" className="space-y-6">
             <Card className="card-hover">
               <CardHeader>
-                <CardTitle className="text-xl">AI Assistant</CardTitle>
+                <CardTitle className="text-xl text-foreground">AI Assistant</CardTitle>
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="space-y-4">
-                  <div className="bg-gray-50 rounded-lg p-4 space-y-3">
+                  <div className="bg-card rounded-lg p-4 space-y-3">
                     <div className="flex items-start gap-3">
-                      <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center">
-                        <span className="text-blue-600">👤</span>
+                      <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center">
+                        <span className="text-primary">👤</span>
                       </div>
                       <div>
-                        <p className="font-medium text-gray-900">User</p>
-                        <p className="text-gray-700">Can you send today's agreements?</p>
+                        <p className="font-medium text-foreground">User</p>
+                        <p className="text-muted-foreground">Can you send today's agreements?</p>
                       </div>
                     </div>
                     <div className="flex items-start gap-3">
-                      <div className="w-8 h-8 rounded-full bg-indigo-100 flex items-center justify-center">
-                        <span className="text-indigo-600">🤖</span>
+                      <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center">
+                        <span className="text-primary">🤖</span>
                       </div>
                       <div>
-                        <p className="font-medium text-gray-900">Assistant</p>
-                        <p className="text-gray-700">Sent! Three agreements emailed to logistics@yourbiz.com.</p>
+                        <p className="font-medium text-foreground">Assistant</p>
+                        <p className="text-muted-foreground">Sent! Three agreements emailed to logistics@yourbiz.com.</p>
                       </div>
                     </div>
                   </div>

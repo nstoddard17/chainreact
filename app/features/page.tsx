@@ -60,7 +60,7 @@ export default function FeaturesPage() {
   const scale = useTransform(scrollYProgress, [0, 0.2], [1, 0.8]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+    <div className="min-h-screen bg-background pt-32 pb-12 px-4">
       <motion.div
         style={{ opacity, scale }}
         className="fixed inset-0 pointer-events-none"
@@ -68,102 +68,90 @@ export default function FeaturesPage() {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary-600/10 via-transparent to-transparent" />
       </motion.div>
 
-      <main className="relative">
+      <main className="max-w-6xl mx-auto space-y-12">
         {/* Hero Section */}
-        <section className="relative py-12 sm:py-20 overflow-hidden">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-3xl mx-auto text-center">
-              <AnimatedText
-                text="Powerful Features"
-                className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-6"
-              />
-              <AnimatedText
-                text="Everything you need to build and scale your application"
-                className="text-lg sm:text-xl text-gray-600 mb-8"
-              />
-              <div className="flex flex-col sm:flex-row gap-6 justify-center">
-                <ButtonVariants 
-                  variant="primary" 
-                  className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-8 py-4 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5" 
-                  asChild
-                >
-                  <Link href="/login?signup=true" className="flex items-center gap-2">
-                    Start Building Now
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                    </svg>
-                  </Link>
-                </ButtonVariants>
-                <ButtonVariants 
-                  variant="outline" 
-                  className="bg-white border-2 border-gray-200 text-gray-700 hover:bg-gray-50 hover:border-gray-300 px-8 py-4 text-lg font-semibold rounded-xl transition-all duration-300 transform hover:-translate-y-0.5" 
-                  asChild
-                >
-                  <Link href="/pricing" className="flex items-center gap-2">
-                    Compare Plans
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </Link>
-                </ButtonVariants>
-              </div>
-            </div>
+        <section className="bg-card rounded-xl shadow-lg p-8 text-center">
+          <h1 className="text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl md:text-6xl">
+            Powerful Features
+          </h1>
+          <p className="mt-6 text-lg leading-8 text-muted-foreground">
+            Everything you need to build and scale your application
+          </p>
+          <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-6">
+            <ButtonVariants 
+              variant="primary" 
+              className="px-8 py-4 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5" 
+              asChild
+            >
+              <Link href="/login?signup=true" className="flex items-center gap-2">
+                Start Building Now
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </Link>
+            </ButtonVariants>
+            <ButtonVariants 
+              variant="outline" 
+              className="border-2 border-primary text-primary hover:bg-primary/10 px-8 py-4 text-lg font-semibold rounded-xl transition-all duration-300 transform hover:-translate-y-0.5" 
+              asChild
+            >
+              <Link href="/pricing" className="flex items-center gap-2">
+                Compare Plans
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </Link>
+            </ButtonVariants>
           </div>
         </section>
 
         {/* Features Grid */}
-        <section className="py-12 sm:py-20">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {features.map((feature, index) => (
-                <ScrollReveal key={feature.title} delay={index * 0.1}>
-                  <InteractiveCard {...feature} />
-                </ScrollReveal>
-              ))}
-            </div>
+        <section className="bg-card rounded-xl shadow-lg p-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {features.map((feature, index) => (
+              <ScrollReveal key={feature.title} delay={index * 0.1}>
+                <InteractiveCard {...feature} />
+              </ScrollReveal>
+            ))}
           </div>
         </section>
 
         {/* CTA Section */}
-        <section className="py-12 sm:py-20">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto text-center">
-              <FloatingElement>
-                <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">
-                  Ready to get started?
-                </h2>
-                <p className="text-lg text-gray-600 mb-8">
-                  Join thousands of developers who are already building with our platform.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-6 justify-center">
-                  <ButtonVariants 
-                    variant="primary" 
-                    className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-8 py-4 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5" 
-                    asChild
-                  >
-                    <Link href="/login?signup=true" className="flex items-center gap-2">
-                      Start Your Free Trial
-                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                      </svg>
-                    </Link>
-                  </ButtonVariants>
-                  <ButtonVariants 
-                    variant="outline" 
-                    className="bg-white border-2 border-gray-200 text-gray-700 hover:bg-gray-50 hover:border-gray-300 px-8 py-4 text-lg font-semibold rounded-xl transition-all duration-300 transform hover:-translate-y-0.5" 
-                    asChild
-                  >
-                    <Link href="/contact" className="flex items-center gap-2">
-                      Schedule a Demo
-                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                      </svg>
-                    </Link>
-                  </ButtonVariants>
-                </div>
-              </FloatingElement>
+        <section className="bg-card rounded-xl shadow-lg p-8 text-center">
+          <FloatingElement>
+            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-6">
+              Ready to get started?
+            </h2>
+            <p className="text-lg text-muted-foreground mb-8">
+              Join thousands of developers who are already building with our platform.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-6 justify-center">
+              <ButtonVariants 
+                variant="primary" 
+                className="px-8 py-4 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5" 
+                asChild
+              >
+                <Link href="/login?signup=true" className="flex items-center gap-2">
+                  Start Your Free Trial
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  </svg>
+                </Link>
+              </ButtonVariants>
+              <ButtonVariants 
+                variant="outline" 
+                className="border-2 border-primary text-primary hover:bg-primary/10 px-8 py-4 text-lg font-semibold rounded-xl transition-all duration-300 transform hover:-translate-y-0.5" 
+                asChild
+              >
+                <Link href="/contact" className="flex items-center gap-2">
+                  Schedule a Demo
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </Link>
+              </ButtonVariants>
             </div>
-          </div>
+          </FloatingElement>
         </section>
       </main>
     </div>

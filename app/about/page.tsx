@@ -48,24 +48,11 @@ const team = [
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+    <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="relative py-24 sm:py-32 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary-700 to-primary-800 opacity-95" />
-        <div className="absolute inset-0 bg-grid-white/10" />
-        <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="mx-auto max-w-2xl text-center">
-            <AnimatedText
-              text="Our Mission"
-              className="text-4xl font-bold tracking-tight text-white sm:text-6xl drop-shadow-lg"
-            />
-            <p className="mt-6 text-lg leading-8 text-white/90">
-              We're on a mission to empower developers and teams to build better software, faster.
-              Our platform combines cutting-edge technology with intuitive design to create the
-              perfect development environment.
-            </p>
-          </div>
-        </div>
+      <section className="relative w-full bg-card py-20 px-4 sm:px-6 lg:px-8 text-center">
+        <h1 className="text-5xl font-extrabold text-foreground drop-shadow-lg mb-4" style={{textShadow: '0 2px 8px rgba(0,0,0,0.5)'}}>Our Mission</h1>
+        <p className="max-w-2xl mx-auto text-lg text-muted-foreground mb-8">Empowering businesses to automate workflows, save time, and drive growth with seamless integrations and intelligent automation.</p>
       </section>
 
       {/* Stats Section */}
@@ -73,21 +60,21 @@ export default function AboutPage() {
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-2xl lg:max-w-none">
             <div className="text-center">
-              <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+              <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
                 Trusted by developers worldwide
               </h2>
-              <p className="mt-4 text-lg leading-8 text-gray-600">
+              <p className="mt-4 text-lg leading-8 text-muted-foreground">
                 Our platform has helped thousands of teams build and scale their applications.
               </p>
             </div>
             <dl className="mt-16 grid grid-cols-1 gap-0.5 overflow-hidden rounded-2xl text-center sm:grid-cols-2 lg:grid-cols-4">
               {stats.map((stat) => (
                 <ScrollReveal key={stat.label}>
-                  <div className="flex flex-col bg-white p-8">
-                    <dt className="text-sm font-semibold leading-6 text-gray-600">
+                  <div className="flex flex-col bg-card p-8">
+                    <dt className="text-sm font-semibold leading-6 text-muted-foreground">
                       {stat.label}
                     </dt>
-                    <dd className="order-first text-3xl font-semibold tracking-tight text-gray-900">
+                    <dd className="order-first text-3xl font-semibold tracking-tight text-foreground">
                       <AnimatedCounter
                         end={stat.value}
                         suffix={stat.suffix}
@@ -106,10 +93,10 @@ export default function AboutPage() {
       <section className="py-24 sm:py-32">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+            <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               Our Story
             </h2>
-            <p className="mt-6 text-lg leading-8 text-gray-600">
+            <p className="mt-6 text-lg leading-8 text-muted-foreground">
               Founded in 2020, we set out to revolutionize how teams build and deploy applications.
               What started as a small team of passionate developers has grown into a global platform
               trusted by thousands of teams worldwide.
@@ -118,13 +105,13 @@ export default function AboutPage() {
           <div className="mx-auto mt-16 grid max-w-3xl grid-cols-1 gap-8 lg:grid-cols-2">
             <ScrollReveal>
               <div className="flex flex-col gap-8">
-                <p className="text-lg leading-relaxed text-gray-600">
+                <p className="text-lg leading-relaxed text-muted-foreground">
                   Our journey began when we noticed a gap in the market for a truly developer-friendly
                   platform that combined powerful features with an intuitive interface. We spent months
                   talking to developers, understanding their pain points, and designing solutions that
                   would make their lives easier.
                 </p>
-                <p className="text-lg leading-relaxed text-gray-600">
+                <p className="text-lg leading-relaxed text-muted-foreground">
                   Today, we're proud to offer a platform that not only meets but exceeds the needs of
                   modern development teams. From startups to enterprises, our tools help teams build
                   better software, faster.
@@ -133,12 +120,12 @@ export default function AboutPage() {
             </ScrollReveal>
             <ScrollReveal>
               <div className="flex flex-col gap-8">
-                <p className="text-lg leading-relaxed text-gray-600">
+                <p className="text-lg leading-relaxed text-muted-foreground">
                   Our commitment to innovation and user experience has earned us recognition in the
                   industry, but our greatest achievement is the success of our users. We're constantly
                   evolving our platform based on user feedback and emerging technologies.
                 </p>
-                <p className="text-lg leading-relaxed text-gray-600">
+                <p className="text-lg leading-relaxed text-muted-foreground">
                   As we look to the future, we remain focused on our mission: to empower developers
                   and teams to build better software. We're excited to continue this journey with
                   our growing community of users.
@@ -153,10 +140,10 @@ export default function AboutPage() {
       <section className="py-24 sm:py-32">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+            <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               Meet our team
             </h2>
-            <p className="mt-6 text-lg leading-8 text-gray-600">
+            <p className="mt-6 text-lg leading-8 text-muted-foreground">
               We're a diverse team of passionate individuals working together to build the future of
               software development.
             </p>
@@ -178,11 +165,13 @@ export default function AboutPage() {
                         className="object-cover"
                       />
                     </div>
-                    <h3 className="mt-6 text-lg font-semibold leading-8 tracking-tight text-gray-900">
+                    <h3 className="mt-6 text-lg font-semibold leading-8 tracking-tight text-foreground">
                       {person.name}
                     </h3>
-                    <p className="text-base leading-7 text-primary-600">{person.role}</p>
-                    <p className="mt-4 text-base leading-relaxed text-gray-600">{person.bio}</p>
+                    <p className="text-base leading-7 text-primary">
+                      {person.role}
+                    </p>
+                    <p className="mt-4 text-base leading-relaxed text-muted-foreground">{person.bio}</p>
                   </li>
                 </TiltCard>
               </ScrollReveal>
@@ -207,7 +196,7 @@ export default function AboutPage() {
           <div className="mt-10 flex items-center justify-center gap-x-6">
             <ButtonVariants
               variant="primary"
-              className="bg-white text-primary-700 hover:bg-gray-100 px-8 py-4 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5"
+              className="px-8 py-4 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5"
               asChild
             >
               <Link href="/login?signup=true" className="flex items-center gap-2">
@@ -219,7 +208,7 @@ export default function AboutPage() {
             </ButtonVariants>
             <ButtonVariants
               variant="outline"
-              className="bg-transparent border-2 border-white text-white hover:bg-white/10 px-8 py-4 text-lg font-semibold rounded-xl transition-all duration-300 transform hover:-translate-y-0.5"
+              className="border-2 border-white text-white hover:bg-white/10 px-8 py-4 text-lg font-semibold rounded-xl transition-all duration-300 transform hover:-translate-y-0.5"
               asChild
             >
               <Link href="/contact" className="flex items-center gap-2">

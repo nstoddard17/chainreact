@@ -110,33 +110,28 @@ export default function PricingPage() {
   const plans = isYearly ? pricingPlans.yearly : pricingPlans.monthly;
 
   return (
-    <div className="bg-gray-50 py-24">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <main>
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 mt-16">
         <div className="text-center">
-          <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
+          <h1 className="text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl md:text-6xl">
             Simple, transparent pricing
           </h1>
           <p className="mt-4 text-lg text-gray-600">
             Choose the plan that's right for you
           </p>
-          
           {/* Billing Toggle */}
           <div className="mt-8 flex justify-center">
             <div className="relative flex rounded-full bg-gray-100 p-1">
               <button
                 type="button"
-                className={`${
-                  !isYearly ? 'bg-white shadow-sm' : ''
-                } relative w-32 rounded-full py-2 text-sm font-medium text-gray-900 transition-all`}
+                className={`${!isYearly ? 'bg-white shadow-sm' : ''} relative w-32 rounded-full py-2 text-sm font-medium text-gray-900 transition-all`}
                 onClick={() => setIsYearly(false)}
               >
                 Monthly
               </button>
               <button
                 type="button"
-                className={`${
-                  isYearly ? 'bg-white shadow-sm' : ''
-                } relative w-32 rounded-full py-2 text-sm font-medium text-gray-900 transition-all`}
+                className={`${isYearly ? 'bg-white shadow-sm' : ''} relative w-32 rounded-full py-2 text-sm font-medium text-gray-900 transition-all`}
                 onClick={() => setIsYearly(true)}
               >
                 Yearly
@@ -147,65 +142,67 @@ export default function PricingPage() {
             </div>
           </div>
         </div>
+      </div>
 
-        <div className="mt-16 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {plans.map((plan, index) => (
-            <motion.div
-              key={plan.name}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-            >
-              <Card className={`h-full ${plan.popular ? 'border-blue-600' : ''}`}>
-                <CardHeader>
-                  {plan.popular && (
-                    <div className="mb-4">
-                      <span className="inline-flex rounded-full bg-blue-100 px-3 py-1 text-sm font-semibold text-blue-600">
-                        Most Popular
-                      </span>
-                    </div>
-                  )}
-                  <CardTitle className="text-2xl">{plan.name}</CardTitle>
-                  <div className="mt-4 flex items-baseline">
-                    <span className="text-4xl font-bold tracking-tight text-gray-900">
-                      {plan.price}
-                    </span>
-                    {plan.price !== 'Free' && (
-                      <span className="ml-1 text-lg text-gray-500">
-                        /{isYearly ? 'year' : 'month'}
-                      </span>
+      <section className="py-16">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mt-16 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            {plans.map((plan, index) => (
+              <motion.div
+                key={plan.name}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
+                <Card className={`h-full ${plan.popular ? 'border-blue-600' : ''}`}>
+                  <CardHeader>
+                    {plan.popular && (
+                      <div className="mb-4">
+                        <span className="inline-flex rounded-full bg-blue-100 px-3 py-1 text-sm font-semibold text-blue-600">
+                          Most Popular
+                        </span>
+                      </div>
                     )}
-                  </div>
-                  <CardDescription>{plan.description}</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <ul className="space-y-4">
-                    {plan.features.map((feature) => (
-                      <li key={feature} className="flex items-start">
-                        <Check className="h-5 w-5 text-blue-600 shrink-0" />
-                        <span className="ml-3 text-gray-600">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-                <CardFooter>
-                  <Button
-                    className={`w-full ${
-                      plan.popular
-                        ? 'bg-blue-600 hover:bg-blue-700'
-                        : 'bg-gray-900 hover:bg-gray-800'
-                    }`}
-                  >
-                    {plan.cta}
-                  </Button>
-                </CardFooter>
-              </Card>
-            </motion.div>
-          ))}
+                    <CardTitle className="text-2xl">{plan.name}</CardTitle>
+                    <div className="mt-4 flex items-baseline">
+                      <span className="text-4xl font-bold tracking-tight text-gray-900">
+                        {plan.price}
+                      </span>
+                      {plan.price !== 'Free' && (
+                        <span className="ml-1 text-lg text-gray-500">
+                          /{isYearly ? 'year' : 'month'}
+                        </span>
+                      )}
+                    </div>
+                    <CardDescription>{plan.description}</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <ul className="space-y-4">
+                      {plan.features.map((feature) => (
+                        <li key={feature} className="flex items-start">
+                          <Check className="h-5 w-5 text-blue-600 shrink-0" />
+                          <span className="ml-3 text-gray-600">{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </CardContent>
+                  <CardFooter>
+                    <Button
+                      className={`w-full ${plan.popular ? 'bg-blue-600 hover:bg-blue-700' : 'bg-gray-900 hover:bg-gray-800'}`}
+                    >
+                      {plan.cta}
+                    </Button>
+                  </CardFooter>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
         </div>
+      </section>
 
-        {/* FAQ Section */}
-        <div className="mt-24">
+      {/* FAQ Section */}
+      <section className="py-16">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 text-center">
             Frequently Asked Questions
           </h2>
@@ -235,7 +232,7 @@ export default function PricingPage() {
             ))}
           </div>
         </div>
-      </div>
-    </div>
+      </section>
+    </main>
   );
 } 

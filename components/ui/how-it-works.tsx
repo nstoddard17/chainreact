@@ -23,13 +23,13 @@ const steps = [
 
 export function HowItWorks() {
   return (
-    <section className="py-24 bg-white">
+    <section className="py-24 bg-card rounded-xl shadow-lg pt-8">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center">
-          <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+          <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
             How It Works
           </h2>
-          <p className="mt-4 text-lg text-gray-600">
+          <p className="mt-4 text-lg text-muted-foreground">
             Create powerful automations in three simple steps
           </p>
         </div>
@@ -45,17 +45,19 @@ export function HowItWorks() {
                 className="flex-1 text-center"
               >
                 <div className="relative">
-                  <div className="mx-auto h-24 w-24 rounded-full bg-blue-100 flex items-center justify-center text-4xl">
+                  <div className="mx-auto h-24 w-24 rounded-full bg-primary/10 flex items-center justify-center text-4xl">
                     {step.icon}
                   </div>
                   {index < steps.length - 1 && (
                     <div className="hidden md:block absolute top-1/2 -right-4 transform -translate-y-1/2">
-                      <ArrowRight className="h-8 w-8 text-gray-400" />
+                      <ArrowRight className="h-8 w-8 text-muted-foreground" />
                     </div>
                   )}
                 </div>
-                <h3 className="mt-6 text-xl font-semibold text-gray-900">{step.title}</h3>
-                <p className="mt-2 text-gray-600">{step.description}</p>
+                <div className="mt-6 bg-background rounded-lg shadow p-6">
+                  <h3 className="text-xl font-semibold text-foreground">{step.title}</h3>
+                  <p className="mt-2 text-muted-foreground">{step.description}</p>
+                </div>
               </motion.div>
             ))}
           </div>
